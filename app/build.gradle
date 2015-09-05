@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+    defaultConfig {
+        applicationId "caisheng.com.search"
+        minSdkVersion 16
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+
+
+
+    signingConfigs {
+        //你自己的keystore信息
+        release {
+            keyAlias 'aolaigo'
+            keyPassword '123456'
+            storeFile file('E:/test.jks')
+            storePassword '123456'
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    productFlavors {
+
+        huawei {
+            minSdkVersion 14
+            targetSdkVersion 21
+            manifestPlaceholders =[Value: "huawei"]
+        }
+        xiaomi {
+            minSdkVersion 14
+            targetSdkVersion 21
+            manifestPlaceholders =[Value: "xiaomi"]
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    // compile (name:'cai',ext:'aar')
+
+    // compile project(':cai')
+    compile 'com.android.support:design:22.2.0'
+    compile 'com.facebook.fresco:fresco:0.6.0'
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.github.liuguangqiang.swipeback:library:1.0.2@aar'
+    compile 'com.sothree.slidinguppanel:library:3.1.1'
+    compile 'me.dm7.barcodescanner:zbar:1.5'
+}

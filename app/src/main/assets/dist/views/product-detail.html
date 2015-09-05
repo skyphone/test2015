@@ -1,0 +1,184 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link back">
+                <i class="icon icon-back icon-small"></i>
+                <span>商品详情</span>
+            </a>
+        </div>
+        <div class="right">
+        <!--
+            <a href="#" class="link icon-only">
+                <i class="icon icon-history icon-small"></i>
+            </a>
+            <a href="#" class="link icon-only">
+                <i class="icon icon-more icon-small"></i>
+            </a> 
+        -->
+        </div>
+    </div>
+</div>
+<div class="pages">
+    <div data-page="product-detail" class="page no-swipeback no-toolbar toolbar-fixed">
+        <div class="page-content">
+            {{#json json_url}}
+            <!-- 幻灯片 -->
+            <div class="slider-container slider-init" data-autoplay="false" data-pagination=".slider-pagination" data-paginationHide="false">
+                <div class="slider-wrapper">
+                    {{#each data.imgUrls}}
+                    <div class="slider-slide">
+                        <span>
+                            <img src={{this}} data-imgindex={{@index}}>
+                        </span>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="slider-pagination"></div>
+            </div>
+            <div class="content-block tablet-inset content-block-top-none">
+                <div class="content-block-inner">
+                    <div class="text-align-center">{{data.name}}</div>
+                    <div class="product-price no-gutter padding-medium-vertical">
+                        <div class="after-price sale-price">{{data.p_in_alj}}</div>
+                        <div>
+                            <div class="before-price"><small>{{data.p_in_scj}}</small>
+                            </div>
+                            <span class="badge-yellow"><small>{{data.dis_rate}}折</small></span>
+                        </div>
+                    </div>    
+                    {{#if data.cx_rate.length}}                
+                    <div class="cx-rate">
+                    {{/if}}
+                        {{#each data.cx_rate}}
+                        <div>
+                            <div><div class="badge-red"><small>{{this.name}}</small></div></div>
+                            <div>{{#each this.content}}<div>{{this}}</div>{{/each}}</div>
+                        </div>
+                        {{/each}}
+                    {{#if data.cx_rate.length}} 
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="list-block tablet-inset">
+                <div class="item-link item-content media-list">
+                    <div class="item-inner">
+                        <div class="item-title-row">
+                            <div class="item-title">商品信息</div>
+                        </div>
+                        <div class="line margin-small-bottom"></div>
+                        <div class="item-subtitle row"><span class="col-20">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：</span><span class="col-80">{{data.brand}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-block tablet-inset">
+                <a href="#" data-popup=".popup-product-size" class="item-link item-content open-popup">
+                    <!-- <div class="item-media"><i class="icon-countdown icon-small"></i>
+                    </div> -->
+                    <div class="item-inner bg-icon-arrow-right">
+                        <div class="item-title"><span class="choose-please">请选择 </span>
+                                    {{#each data.attrs}}
+                                        <span class="index-{{@index}}">{{@key}} </span>
+                                    {{/each}}
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="content-block content-block-small tablet-inset">
+                <div class="content-block-inner content-block-inner-small">
+                    <div class="buttons-row">
+                        <a href="#tab1" class="tab-link active button">商品介绍</a>
+                        <a href="#tab2" class="tab-link button">规格说明</a>
+                    </div>
+                    <div class="tabs">
+                        <div id="tab1" class="tab active">
+                            <div class="content-block">
+                                {{data.desc}}
+                            </div>
+                        </div>
+                        <div id="tab2" class="tab">
+                            <div class="content-block">
+                                {{data.spec}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 产品规格 -->
+            <div class="popup popup-product-size">
+                <div class="popup-head">
+                    <div class="list-block media-list">
+                        <div class="item-link item-content item-after-right-top">
+                            <div class="item-media"><img id="main-img" src={{data.logo}} width="60">
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title"><span>{{data.name}}</span>
+                                    </div>
+                                    <div class="item-after"><a href="#" class="close-popup btn btn-none"><i class="icon-close icon-large"></i></a>
+                                    </div>
+                                </div>
+                                <div class="item-subtitle price-symbol red sale-price">{{data.p_in_alj}}</div>
+                                <div class="item-subtitle grayDark">
+                                    <span class="choose-please">请选择 </span>
+                                    {{#each data.attrs}}
+                                        <span class="index-{{@index}}">{{@key}} </span>
+                                    {{/each}}
+                                </div>
+                                <input type="hidden" id="sku-id" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup-center light">
+                    <div class="content-block content-block-small line-height">
+                        <div class="row">
+                            {{#each data.attrs}}
+                            <div class="col-15 vertical-align-middle text-align-center"><strong>{{@key}}</strong>
+                            </div>
+                            <div class="col-85" id="index-{{@index}}" data-index="{{@index}}">                            
+                                {{#each this}}
+                                <span class="sku btn btn-gray btn-outline {{#if this}}{{else}}disabled{{/if}}">{{@key}}</span>
+                                {{/each}}                         
+                            </div>
+                            <div class="line margin-medium-vertical"></div>
+                            {{/each}}
+                            <div class="col-15 vertical-align-middle text-align-center"><strong>数量</strong>
+                            </div>
+                            <div class="col-85">
+                                <span class="count-control">
+                                    <a href="#" id="count-control-substruction" class="btn btn-gray btn-outline btn-large"><i class="icon-substruction"></i></a>
+                                    <input type="text" value="0" id="count" class="pointer-events-none">
+                                    <a href="#" id="count-control-add" class="btn btn-gray btn-outline btn-large"><i class="icon-add"></i></a>
+                                </span>
+                                <span class="start-count" id="start-count">2</span>(<span id="stock" class="stock"></span>)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup-footer">
+                    <a class="add-to-cart btn btn-red btn-large btn-full">加入购物车</a>
+                    <!--<a class="go-to-pay btn btn-yellow btn-large">立即购买</a>-->
+                </div>
+            </div>
+            <div class="toolbar tabbar tabbar-labels">
+                <div class="toolbar-inner row  text-align-center">
+                    <div class="col-20">
+                        <a class="go-to-cart btn btn-none btn-full"><i class="icon-cart icon-large"><span id="cart-count" class="badge badge-red">0</span></i></a>
+                    </div>
+                    <div class="col-20">
+                        <a class="add-favourite btn btn-none btn-full"><i class="icon-daishoucang icon-large"></i></a>
+                    </div>
+                    <div class="col-60">
+                        <a href="#" class="add-to-cart outer-btn btn btn-red btn-large btn-full">加入购物车</a>
+                    </div>
+                    <!--<div class="col-33">
+                        <a href="#" class="go-to-pay outer-btn btn btn-yellow btn-large btn-full">立即购买</a>
+                    </div>-->
+                </div>
+            </div>
+            {{/json}}
+        </div>
+    </div>
+</div>

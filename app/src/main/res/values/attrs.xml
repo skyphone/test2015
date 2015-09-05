@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyView">
+
+
+
+    </declare-styleable>
+
+    <declare-styleable name="roundedimageview">
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_inside_color" format="color" />
+        <attr name="border_outside_color" format="color"></attr>
+    </declare-styleable>
+    
+   <declare-styleable name="CustomCaiView">
+        <attr name="isShow" format="enum">
+            <enum name="show" value="0"></enum>
+            <enum name="noShow" value="1"></enum>
+        </attr>
+        <attr name="num" format="integer">
+        </attr>
+        <attr name="onclick" format="string"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="PieChart">
+        <attr name="autoCenterPointerInSlice" format="boolean"/>
+        <attr name="highlightStrength" format="float"/>
+        <attr name="labelColor" format="color"/>
+        <attr name="labelHeight" format="dimension"/>
+        <attr name="labelPosition" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="right" value="1"/>
+        </attr>
+        <attr name="labelWidth" format="dimension"/>
+        <attr name="labelY" format="dimension"/>
+        <attr name="pieRotation" format="integer"/>
+        <attr name="pointerRadius" format="dimension"/>
+        <attr name="showTexts" format="boolean"/>
+    </declare-styleable>
+</resources>

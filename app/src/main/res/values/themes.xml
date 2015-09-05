@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MyTheme" parent="Theme.AppCompat.Light">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="colorPrimaryDark">#ff0099</item>
+        <item name="colorPrimary">#ff0099</item>
+        <!-- The rest of your attributes -->
+    </style>
+    <style name="Theme.Swipe.Back" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

@@ -1,0 +1,101 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link back">
+                <i class="icon icon-back"></i>
+            </a>
+        </div>
+        <div class="center">
+            <form class="search-form" action="views/search.html">
+                <a href="views/search.html">
+                    <input class="search-input bg-icon-search" type="text" name="keyword">
+                    <span class="search-cancel"><i class="icon-x icon-medium"></i></span>
+                </a>
+            </form>
+        </div>
+        <div class="right">
+            <a href="#" id="view-mode" class="link icon-only">
+                <i class="icon icon-liebiaomoshi"></i>
+                <i class="icon icon-zhongtumoshi hidden"></i>
+            </a>
+            <a href="#" class="link icon-only open-panel" data-panel="right">
+                <i class="icon icon-filter"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="pages">
+    <div data-page="search-list" class="page no-swipeback no-toolbar hide-on-scroll-down">
+        <div class="page-content">
+            {{#json json_url}}
+            <div class="panel panel-right panel-cover filter-panel">
+                <div class="panel-footer">
+                    {{#if data.category.length}}
+                    <a id="reset-form" href="#" class="btn btn-yellow btn-large">重置</a>
+                    <a id="query-form" href="#" class="close-panel btn btn-red btn-large">确定</a>
+                    {{else}}
+                    <a href="#" class="close-panel btn btn-red btn-large">返回</a>
+                    {{/if}}
+                </div>
+                <div class="panel-content">
+                    <form>                    
+                        {{#if data.category.length}}
+                        <ul class="margin-border-list">
+                            <li>
+                                <div class="selecter">
+                                    <div class="selecter-title">
+                                        分类
+                                    </div>
+                                    <select name="pcid" id="category-selecter" class="bg-icon-arrow-right">    
+                                        <option value="">所有相关分类/{{data.total}}</option>                               
+                                        {{#each data.category}}
+                                        <option value="{{this.id}}"{{#if this.IsCheck}} selected=""{{/if}}>{{this.name}}/{{this.count}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </li>
+                        </ul>
+                        {{else}}
+                        <div class="empty-result">
+                            没有您搜索的分类！
+                        </div>
+                        {{/if}}
+                        <ul class="margin-border-list" id="search-filters">
+                        </ul>
+                    </form>
+                </div>
+            </div>
+            <div class="hide-on-scroll-down-bar">
+                <ul class="h-list col-100 paixu hide-on-scroll-down-bar-inner row no-gutter">
+                    <li class="col-25" data-value="5">
+                        <a href="#">相关度</a>
+                    </li>
+                    <li class="col-25" data-value="1">
+                        <a href="#">销量<i class="icon-desc hidden"></i><i class="icon-asc hidden"></i></a>
+                    </li>
+                    <li class="col-25" data-value="2">
+                        <a href="#">价格<i class="icon-desc hidden"></i><i class="icon-asc hidden"></i></a>
+                    </li>
+                    <li class="col-25" data-value="4">
+                        <a href="#">上架时间<i class="icon-desc hidden"></i><i class="icon-asc hidden"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="infinite-scroll" data-distance="300">
+                <div class="list-block media-list large-view virtual-list"></div>
+                {{#if data.total}}
+                <!-- 加载提示符 -->
+                <div class="infinite-scroll-preloader">
+                {{else}}
+                <div class="empty-result">
+                    <i class="icon-empty-result"></i>
+                    没有您搜索的商品！
+                </div>
+                {{/if}}
+                </div>
+            </div>
+            <div class="scroll-top scroll-top-hidden"><small><i class="icon-scroll-top icon-medium"></i><div>置顶</div></small></div>
+            {{/json}}
+        </div>
+    </div>
+</div>

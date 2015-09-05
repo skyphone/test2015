@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:cai="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    tools:context=".My4">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button_province"
+        android:onClick="show"
+        android:layout_gravity="center_horizontal" />
+
+    <caisheng.com.search.MyView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/view2"
+        android:layout_gravity="center_horizontal" />
+
+    <caisheng.com.search.CustomCaiView
+        cai:isShow="noShow"
+        cai:onclick="qweqweqwe"
+        cai:num="2555"
+        android:id="@+id/custom"
+        android:background="#2233ff"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp" />
+
+
+</LinearLayout>

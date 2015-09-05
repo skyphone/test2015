@@ -1,0 +1,73 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link back">
+                <i class="icon icon-back"></i>
+            </a>
+        </div>
+        <div class="center">
+            <form class="search-form" action="views/search.html">
+                <a href="views/search.html">
+                    <input class="search-input bg-icon-search" type="text" name="keyword" placeholder="搜索奥莱购商品">
+                    <span class="search-cancel hidden"><i class="icon-x icon-medium"></i></span>
+                </a>
+                <input type="hidden" value="1_1" id="order" name="order">
+            </form>
+        </div>
+        <div class="right">
+            <a class="search-submit" href="views/search.html" class="link">搜索</a>
+        </div>
+    </div>
+</div>
+<div class="pages">
+    <div data-page="category" class="page no-swipeback no-toolbar">
+        <div class="page-content category-list">
+            {{#json json_url}}
+            <div class="row no-gutter">
+                <div class="col-25 category-left">
+                    <div class="swipemove swipemove-vertical">
+                        <ul class="swipemove-inner tab-links">
+                            {{#each data}}
+                            <li><a href="#tab{{@index}}" class="tab-link{{#if @index}}{{else}} active{{/if}}">{{this.name}}</a></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-75 category-right tabs">
+                    {{#each data}}
+                        {{#if @index}}
+                        <dl class="tab" id="tab{{@index}}">
+                            {{#each this.sub}}
+                            <dt>{{this.name}}</dt>
+                            <dd class="row row-3">
+                                {{#each this.sub}}
+                                <a title="{{this.name}}" class="col-33" href="views/search-list.html?{{this.hash}}">
+                                    <div><img src="" data-src={{this.img}}></div>
+                                    <span><small>{{this.name}}</small></span>
+                                </a>
+                                {{/each}}
+                            </dd>
+                            {{/each}}
+                        </dl>
+                        {{else}}
+                        <dl class="tab active" id="tab{{@index}}">
+                            {{#each this.sub}}
+                            <dt>{{this.name}}</dt>
+                            <dd class="row row-3">
+                                {{#each this.sub}}
+                                <a title="{{this.name}}" class="col-33" href="views/search-list.html?{{this.hash}}">
+                                    <div><img src={{this.img}}></div>
+                                    <span><small>{{this.name}}</small></span>
+                                </a>
+                                {{/each}}
+                            </dd>
+                            {{/each}}
+                        </dl>
+                        {{/if}}
+                    {{/each}}
+                </div>
+            </div>
+            {{/json}}
+        </div>
+    </div>
+</div>

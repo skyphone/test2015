@@ -1,0 +1,79 @@
+{
+    "Data": {
+        "imgUrls": ["M00/06/1A/CgkeMlSH9RKwgAOuAAFYNfH6-vQ680.JPG", "M00/06/1A/CgkeMlSH9RKStYZaAADoJEwjUTI771.JPG", "M00/06/1A/CgkeMlSH9RLDN0F4AAE0U4p1xxI207.JPG", "M00/06/1A/CgkeMlSH9RKSanCvAAJPsyb1pXY279.JPG", "M00/06/1A/CgkeMlSH9ROhwqG9AALsiZMhuGg619.JPG", "M00/06/1A/CgkeMlSH9RPAdO41AAEuI5t-Yu8706.JPG"],
+        "name": "羽绒 496900 黑色 44 ",
+        "logo": "M00/06/1A/CgkeMlSH9RKwgAOuAAFYNfH6-vQ680.JPG",
+        "p_in_scj": 2660,
+        "p_in_alj": 1330,
+        "cx_rate": null,
+        "dis_rate": 0.5,
+        "desc": "",
+        "spec": [{
+            "ShowTitle": "商品名称",
+            "ShowVaue": "羽绒 496900 黑色 44 "
+        }, {
+            "ShowTitle": "商品编号",
+            "ShowVaue": "10230108004008"
+        }, {
+            "ShowTitle": "上架时间",
+            "ShowVaue": "2014/12/10 15:26:05"
+        }, {
+            "ShowTitle": "商品毛重",
+            "ShowVaue": "0克"
+        }, {
+            "ShowTitle": "商品产地",
+            "ShowVaue": "0"
+        }],
+        "start_count": 0,
+        "max_count": 0,
+        "brand": "路易2000",
+        "sku": [{
+            "SKUID": "10230108004008",
+            "Logo": "M00/06/1A/CgkeMlSH9RKwgAOuAAFYNfH6-vQ680.JPG",
+            "Color": "黑色",
+            "Size": "44",
+            "Stock": 0
+        }, {
+            "SKUID": "10230108004009",
+            "Logo": "M00/06/1A/CgkeMlSH9RKwgAOuAAFYNfH6-vQ680.JPG",
+            "Color": "黑色",
+            "Size": "46",
+            "Stock": 1
+        }, {
+            "SKUID": "10230108004010",
+            "Logo": "M00/06/1A/CgkeMlSH9RKwgAOuAAFYNfH6-vQ680.JPG",
+            "Color": "黑色",
+            "Size": "48",
+            "Stock": 1
+        }, {
+            "SKUID": "10230108004011",
+            "Logo": "M00/06/1A/CgkeMlSH9RKwgAOuAAFYNfH6-vQ680.JPG",
+            "Color": "黑色",
+            "Size": "50",
+            "Stock": 1
+        }, {
+            "SKUID": "10230108004012",
+            "Logo": "M00/06/1A/CgkeMlSH9RKwgAOuAAFYNfH6-vQ680.JPG",
+            "Color": "黑色",
+            "Size": "52",
+            "Stock": 1
+        }, {
+            "SKUID": "10230108004013",
+            "Logo": "M00/06/1A/CgkeMlSH9RKwgAOuAAFYNfH6-vQ680.JPG",
+            "Color": "黑色",
+            "Size": "54",
+            "Stock": 1
+        }, {
+            "SKUID": "10230108004014",
+            "Logo": "M00/06/1A/CgkeMlSH9RKwgAOuAAFYNfH6-vQ680.JPG",
+            "Color": "黑色",
+            "Size": "56",
+            "Stock": 0
+        }]
+    },
+    "ProjectName": null,
+    "Code": "0",
+    "Message": "成功",
+    "Level": "1",
+    "Description": "成功"
+}

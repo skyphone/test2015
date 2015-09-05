@@ -1,0 +1,40 @@
+{
+    "slides": [{
+        "title": "名品场",
+        "src": "http://app.aolaigo.com/20150310/mingpinbanner.jpg",
+        "href": "http://app.aolaigo.com/20150310-mingpin.html"
+    },{
+        "title": "名品荟",
+        "src": "http://app.aolaigo.com/20150310/mingpinbanner.jpg",
+        "href": "http://app.aolaigo.com/20150310-mingpin.html"
+    }],
+    "activties":{
+        "top":{
+            "title":"注册就送",
+            "src": "http://skin01.aolaigo.com/app/images/huodong/registbanner.jpg",
+            "href": "http://app.aolaigo.com/huodong.html"            
+        },
+        "bottom":{
+            "bl":{
+                "title":"箱包鞋靴",
+                "src": "http://skin01.aolaigo.com/app/images/huodong/registbanner.jpg",
+                "href": "http://app.aolaigo.com/huodong.html"            
+            },
+            "br":[{
+                "title":"名品场",
+                "src": "http://skin01.aolaigo.com/app/images/huodong/registbanner.jpg",
+                "href": "http://app.aolaigo.com/huodong.html"            
+            },{
+                "title":"运动场子",
+                "src": "http://skin01.aolaigo.com/app/images/huodong/registbanner.jpg",
+                "href": "http://app.aolaigo.com/huodong.html"            
+            }]
+        }
+    },
+    "brands":[{
+        "title":"Kappa 运动生活 乐享青春 2折起",
+        "src": "http://skin01.aolaigo.com/app/images/huodong/registbanner.jpg",
+        "href": "http://app.aolaigo.com/huodong.html",
+        "hash":"order=4_2&bid=1469&sc=2&opid=93&stk=0&m=1"
+    }]
+}

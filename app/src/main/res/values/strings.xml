@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">Search</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="ll">\rNeTextasdfasdfasdfasdfasddfgasdasdfasdfasdfasdasdfasdasdfassdfasddfgasdasdfasdfasdfasdasdfasdasdfasdffasdfasdfasdfasdfasd</string>
+    <string name="title_activity_flying">FlyingActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="new_message_notification_title_template">New message: %1$s</string>
+
+    <!-- TODO: remove this placeholder text -->
+    <string name="new_message_notification_placeholder_text_template">You said %1$s and lorem ipsum
+        dolor sit amet, consectetur adipiscing elit. Etiam non enim magna. Morbi dictum, velit vel
+        semper venenatis, magna odio volutpat velit, at ullamcorper nulla lacus sed turpis.
+        Pellentesque vitae metus elit, nec tincidunt tellus. Integer sed nisl sem, ullamcorper
+        ornare lacus. Duis ac mauris sed massa congue volutpat. Donec sed erat sit amet turpis
+        viverra rhoncus sit amet nec magna. Donec lacinia ligula at libero volutpat volutpat nec nec
+        tortor.
+    </string>
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
+    <string name="title_activity_view_pager">ViewPagerActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_auto_scroll">AutoScrollActivity</string>
+    <array name="credits">
+        <item>*by androidsoft.org</item>
+        <item>*</item>
+        <item>*</item>
+        <item>*</item>
+        <item>*</item>
+        <item>License</item>
+        <item>*</item>
+        <item>*This program is free software:</item>
+        <item>*you can redistribute it and/or </item>
+        <item>*modify it under the terms of the </item>
+        <item>*GNU General Public License </item>
+        <item>*as published by the Free Software</item>
+        <item>*Foundation, either version 3 </item>
+        <item>*of the License, or (at your option)</item>
+        <item>*any later version.</item>
+        <item>*</item>
+        <item>*The original version was published</item>
+        <item>*by Peter Dornbach</item>
+        <item>*under Apache License 2.0</item>
+        <item>*for more information see</item>
+        <item>*http://www.zebra4me.com/</item>
+        <item>*</item>
+        <item>*Icons are published</item>
+        <item>*by Everaldo Coelho</item>
+        <item>*under the terms of the GNU</item>
+        <item>*Lesser General Public License.</item>
+        <item>*</item>
+        <item>*Drawings provided by kind </item>
+        <item>*courtesy of Peter Dornbach</item>
+        <item>*</item>
+        <item>*</item>
+        <item>*</item>
+        <item>Credits</item>
+        <item>*</item>
+        <item>*/* Main developer */</item>
+        <item>*</item>
+        <item>*Peter Dornbach</item>
+        <item>*</item>
+        <item>*/* GNU version contributor */</item>
+        <item>*</item>
+        <item>*Pierre Levy</item>
+        <item>*</item>
+        <item>*</item>
+        <item>*</item>
+        <item>*</item>
+        <item>*http://www.androidsoft.org</item>
+        <item>*Copyright (c) 2010-2011 P. Dornbach, P. Levy</item>
+    </array>
+    <string name="title_activity_bbb">BBBActivity</string>
+    <string name="title_activity_html">HtmlActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_upload">UploadActivity</string>
+    <string name="title_activity_qrcode">QRCodeActivity</string>
+    <string name="title_activity_car">CarActivity</string>
+</resources>

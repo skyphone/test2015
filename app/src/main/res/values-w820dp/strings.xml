@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Search</string>
+
+    <string name="hello_world">你好时间</string>
+    <string name="action_settings">我们</string>
+</resources>

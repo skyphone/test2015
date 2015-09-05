@@ -1,0 +1,58 @@
+{
+    "channels": [{
+        "title": "男包",
+        "active": true,
+        "banner": {
+            "img": "images/temp/newproductbanner.jpg",
+            "link": "about.html"
+        },
+        "list": [{
+            "img": "images/temp/newproductb.jpg",
+            "pid": "#",
+            "price": "199",
+            "discount": "4.5"
+        }, {
+            "img": "images/temp/newproducta.jpg",
+            "pid": "#",
+            "price": "199",
+            "discount": "4.5"
+        }, {
+            "img": "images/temp/newproductb.jpg",
+            "pid": "#",
+            "price": "199",
+            "discount": "4.5"
+        }, {
+            "img": "images/temp/newproducta.jpg",
+            "pid": "#",
+            "price": "199",
+            "discount": "4.5"
+        }]
+    }, {
+        "title": "女包",
+        "banner": {
+            "img": "images/temp/newproductbanner.jpg",
+            "link": "about.html"
+        },
+        "list": [{
+            "img": "images/temp/newproductb.jpg",
+            "pid": "#",
+            "price": "199",
+            "discount": "4.5"
+        }, {
+            "img": "images/temp/newproducta.jpg",
+            "pid": "#",
+            "price": "199",
+            "discount": "4.5"
+        }, {
+            "img": "images/temp/newproductb.jpg",
+            "pid": "#",
+            "price": "199",
+            "discount": "4.5"
+        }, {
+            "img": "images/temp/newproducta.jpg",
+            "pid": "#",
+            "price": "199",
+            "discount": "4.5"
+        }]
+    }]
+}

@@ -1,0 +1,94 @@
+{
+    "MainOutputVM": {
+        "TotalCount": "5", //搜索结果数量
+        "OutputSkuInfoVMs": [{ //搜索结果
+            "tips": "满300送100", //优惠信息
+            "wname": "路易2000  短T545", //商品名
+            "sku_id": "30230101000296", //sku
+            "wmimg": { //主图
+                "url": "http://img1.aolaigo.com/group1/M00/0B/96/CgkILVNzdzOyCVCYAAPVoGwF6xo443.jpg"
+            },
+            "mprice": "1198.0", //市场价
+            "sprice": "599.0" //折扣价
+        }]
+    },
+    "MainVM": {
+        "Keyword": "2000",
+        "Bpufvm": {
+            "Bspfvms": [{ //价格
+                "MPrice": "0",
+                "LPrice": "50",
+                "RangeID": "M0L50"
+            }, {
+                "MPrice": "50",
+                "LPrice": "150",
+                "RangeID": "M50L150"
+            }, {
+                "MPrice": "150",
+                "LPrice": "300",
+                "RangeID": "M150L300"
+            }, {
+                "MPrice": "300",
+                "LPrice": "500",
+                "RangeID": "M300L500"
+            }, {
+                "MPrice": "500",
+                "LPrice": "800",
+                "RangeID": "M500L800"
+            }, {
+                "MPrice": "800",
+                "LPrice": "1500",
+                "RangeID": "M800L1500"
+            }, {
+                "MPrice": "1500",
+                "LPrice": "0",
+                "RangeID": "M1500L0"
+            }],
+            "Bpafvms": [{ //属性 -> 根据aid组装
+                "aid": 1077,
+                "aname": "尺码",
+                "avid": 55495,
+                "avcap": "170"
+            }, {
+                "aid": 1077,
+                "aname": "尺码",
+                "avid": 55496,
+                "avcap": "175"
+            }, {
+                "aid": 1077,
+                "aname": "尺码",
+                "avid": 55497,
+                "avcap": "180"
+            }, {
+                "aid": 1077,
+                "aname": "尺码",
+                "avid": 55554,
+                "avcap": "165"
+            }, {
+                "aid": 1077,
+                "aname": "尺码",
+                "avid": 55558,
+                "avcap": "185"
+            }, {
+                "aid": 1197,
+                "aname": "颜色",
+                "avid": 38807,
+                "avcap": "如图"
+            }]
+        },
+        "Sbvms": [{ //品牌
+            "bid": "1451",
+            "bname": "路易2000"
+        }]
+    },
+    "MenuVMs": [{ //类目 -> 组装
+        "subs": [{
+            "cid": "230101",
+            "cname": "T恤",
+            "pcid": 2301,
+            "IsCheck": true
+        }],
+        "cname": "上装"
+    }]
+}
+
