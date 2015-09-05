@@ -1,6 +1,7 @@
 package otcapp.com.map;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,6 +41,7 @@ import com.baidu.mapapi.search.route.TransitRoutePlanOption;
 import com.baidu.mapapi.search.route.TransitRouteResult;
 import com.baidu.mapapi.search.route.WalkingRouteResult;
 
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Random;
 
@@ -191,6 +193,17 @@ public class MapActivity extends Activity {
             //在地图上添加Marker，并显示
             map.getMap().addOverlay(option);
         }
+    }
+
+    //调用百度地图
+    public void map(View v){
+        Intent in= null;
+        try {
+            in = Intent.getIntent("intent://map/place/search?query=银行&region=深圳&referer=caisheng.com.search|sea#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end");
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        startActivity(in);
     }
 
     private void initLocation() {
