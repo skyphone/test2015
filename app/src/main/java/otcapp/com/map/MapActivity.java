@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -42,7 +43,7 @@ public class MapActivity extends ActionBarActivity {
     CheckBox checkMap;
     Button btMyPosition;
     public LocationClient mLocationClient = null;
-    PoiSearch poi;
+    PoiSearch poi; //地图检索
     public BDLocationListener myListener = new MyLocationListener();
     BDLocation location1;
     boolean isFirst = true;
@@ -106,12 +107,17 @@ public class MapActivity extends ActionBarActivity {
         map.getMap().setOnMapClickListener(new BaiduMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
+               if(latLng!=null){
+                   Toast.makeText(getApplicationContext(),latLng.toString(),Toast.LENGTH_SHORT).show();
 
+               }
             }
 
             @Override
             public boolean onMapPoiClick(MapPoi mapPoi) {
-
+                    if(mapPoi!=null&&mapPoi.getName()!=null){
+                        Toast.makeText(getApplicationContext(),mapPoi.getName(),Toast.LENGTH_SHORT).show();
+                    }
                 return false;
             }
         });
