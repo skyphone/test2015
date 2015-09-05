@@ -1,10 +1,9 @@
 package otcapp.com.map;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
@@ -26,27 +25,36 @@ import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.overlayutil.TransitRouteOverlay;
+import com.baidu.mapapi.search.core.PoiInfo;
+import com.baidu.mapapi.search.core.SearchResult;
 import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
-import com.baidu.mapapi.search.poi.PoiCitySearchOption;
 import com.baidu.mapapi.search.poi.PoiDetailResult;
 import com.baidu.mapapi.search.poi.PoiResult;
 import com.baidu.mapapi.search.poi.PoiSearch;
+import com.baidu.mapapi.search.route.DrivingRouteResult;
+import com.baidu.mapapi.search.route.OnGetRoutePlanResultListener;
+import com.baidu.mapapi.search.route.PlanNode;
+import com.baidu.mapapi.search.route.RoutePlanSearch;
+import com.baidu.mapapi.search.route.TransitRoutePlanOption;
+import com.baidu.mapapi.search.route.TransitRouteResult;
+import com.baidu.mapapi.search.route.WalkingRouteResult;
 
 import java.util.List;
 import java.util.Random;
 
 import caisheng.com.search.R;
 
-public class MapActivity extends ActionBarActivity {
+public class MapActivity extends Activity {
 
     MapView map;
     CheckBox checkMap;
-    Button btMyPosition;
     public LocationClient mLocationClient = null;
     PoiSearch poi; //地图检索
     public BDLocationListener myListener = new MyLocationListener();
     BDLocation location1;
-    boolean isFirst = true;
+    boolean isFirst = true;//
+    RoutePlanSearch bus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +62,9 @@ public class MapActivity extends ActionBarActivity {
         setContentView(R.layout.activity_car);
         map = (MapView) findViewById(R.id.bmapView);
         checkMap = (CheckBox) findViewById(R.id.checkBox2);
+        bus= RoutePlanSearch.newInstance();
+        bus.setOnGetRoutePlanResultListener(listener);
+
         //卫星地图
         checkMap.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -66,30 +77,9 @@ public class MapActivity extends ActionBarActivity {
             }
         });
 
-
-        //定位
-        btMyPosition = (Button) findViewById(R.id.button11);
-        btMyPosition.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(new LatLng(location1.getLatitude(), location1.getLongitude()));
-                map.getMap().animateMapStatus(u);
-                //构建Marker图标
-                BitmapDescriptor bitmap = BitmapDescriptorFactory .fromResource(R.drawable.abc);
-                Random random=new Random();
-                for (int i = 0; i < 4; i++) {
-                    //构建MarkerOption，用于在地图上添加Marker
-                    OverlayOptions option = new MarkerOptions()
-                            .position(new LatLng(location1.getLatitude() + random.nextDouble() * 0.1, location1.getLongitude() - random.nextDouble() * 0.1))
-                            .icon(bitmap);
-                    //在地图上添加Marker，并显示
-                    map.getMap().addOverlay(option);
-                }
-
-            }
-        });
         initLocation();
 
+        //地图加标识
         map.getMap().setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(final Marker marker) {
@@ -104,6 +94,7 @@ public class MapActivity extends ActionBarActivity {
             }
         });
 
+        //地图事件点击
         map.getMap().setOnMapClickListener(new BaiduMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
@@ -122,11 +113,18 @@ public class MapActivity extends ActionBarActivity {
             }
         });
 
+        //搜索地图信息
         poi=PoiSearch.newInstance();
         poi.setOnGetPoiSearchResultListener(new OnGetPoiSearchResultListener() {
             @Override
             public void onGetPoiResult(PoiResult poiResult) {
+                if(poiResult==null||poiResult.error!= SearchResult.ERRORNO.NO_ERROR){
+                    return;
+                }
 
+                for(PoiInfo info:poiResult.getAllPoi()){
+                    Log.e("info",info.address+info.city+info.uid);
+                }
 
             }
 
@@ -135,8 +133,64 @@ public class MapActivity extends ActionBarActivity {
 
             }
         });
-        poi.searchInCity(new PoiCitySearchOption().city("深圳").keyword("公园").pageNum(4));
 
+
+
+    }
+
+    //公交线路
+    OnGetRoutePlanResultListener listener = new OnGetRoutePlanResultListener() {
+        public void onGetWalkingRouteResult(WalkingRouteResult result) {
+            //
+        }
+        public void onGetTransitRouteResult(TransitRouteResult result) {
+            if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
+                Toast.makeText(MapActivity.this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
+            }
+            if (result.error == SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR) {
+                //起终点或途经点地址有岐义，通过以下接口获取建议查询信息
+                //result.getSuggestAddrInfo()
+                return;
+            }
+            if (result.error == SearchResult.ERRORNO.NO_ERROR) {
+                TransitRouteOverlay overlay = new TransitRouteOverlay(map.getMap());
+                map.getMap().setOnMarkerClickListener(overlay);
+                overlay.setData(result.getRouteLines().get(0));
+                overlay.addToMap();
+                overlay.zoomToSpan();
+            }
+        }
+        public void onGetDrivingRouteResult(DrivingRouteResult result) {
+            //
+        }
+    };
+
+    //search
+    public void search(View v){
+        //poi.searchInCity(new PoiCitySearchOption().city("深圳").keyword("公园").pageNum(4));
+        PlanNode stNode = PlanNode.withCityNameAndPlaceName("深圳", "华南城");
+        PlanNode enNode = PlanNode.withCityNameAndPlaceName("深圳", "大芬");
+        bus.transitSearch((new TransitRoutePlanOption())
+                .from(stNode)
+                .city("深圳")
+                .to(enNode));
+    }
+
+    //定位
+    public void location(View v){
+        MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(new LatLng(location1.getLatitude(), location1.getLongitude()));
+        map.getMap().animateMapStatus(u);
+        //构建Marker图标
+        BitmapDescriptor bitmap = BitmapDescriptorFactory .fromResource(R.drawable.abc);
+        Random random=new Random();
+        for (int i = 0; i < 4; i++) {
+            //构建MarkerOption，用于在地图上添加Marker
+            OverlayOptions option = new MarkerOptions()
+                    .position(new LatLng(location1.getLatitude() + random.nextDouble() * 0.1, location1.getLongitude() - random.nextDouble() * 0.1))
+                    .icon(bitmap);
+            //在地图上添加Marker，并显示
+            map.getMap().addOverlay(option);
+        }
     }
 
     private void initLocation() {
@@ -158,6 +212,7 @@ public class MapActivity extends ActionBarActivity {
         mLocationClient.setLocOption(option);
         mLocationClient.start();
     }
+
 
     class MyLocationListener implements BDLocationListener {
 
