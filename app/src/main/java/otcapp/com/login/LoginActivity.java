@@ -27,6 +27,9 @@ public class LoginActivity extends Activity {
     String url = "http://otcapp.hkbf.com.cn/api/ApiUser/Login";
     EditText edName, edPass;
 
+    String line="this is .the line";
+    String pattern="\\d";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -2,7 +2,6 @@ package caisheng.com.search;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +22,7 @@ import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -105,7 +105,7 @@ public class MyVolley extends ActionBarActivity {
             for (int i = 0; i < jsonArray.length(); i++) {
                 list.add("http://img1.aolaigo.com/group1/" + jsonArray.getJSONObject(i).optString("value"));
             }
-            Log.v("abc", s);
+           // Log.v("abc", s);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -119,8 +119,9 @@ public class MyVolley extends ActionBarActivity {
             requestImage();
             setListImage();
             requestJson();
-            json();*/
-            UpdateAdress();
+           */
+           // UpdateAdress();
+            json();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -226,6 +227,8 @@ public class MyVolley extends ActionBarActivity {
         listView.setLayoutParams(params);
     }
 
+
+
     public void requestJson() {
         String url = "http://memberapi.aolaigo.com/appmember.ashx";
         HashMap<String, String> map = new HashMap<String, String>();
@@ -244,7 +247,7 @@ public class MyVolley extends ActionBarActivity {
     }
 
     public void json() {
-        String url = "http://cms.taolaigo.com/Handler/app_ActivityHandler.ashx";
+        String url = "http://cms.aolaigo.com/Handler/app_ActivityHandler.ashx";
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("opt", "2");
@@ -252,16 +255,29 @@ public class MyVolley extends ActionBarActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+        /*JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
                 Log.e("home", jsonObject.toString());
             }
-        }, null);
+        }, null);*/
+
+        StringRequest jsonRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+               Datas d=new Gson().fromJson(s,Datas.class);
+               // int abc=d.error;
+            }
+        },null);
 
         VolleryInstance.getInstance(this).addToRequestQueue(jsonRequest);
     }
 
+    class Datas{
+        int error;
+        String  msg;
+
+    }
 
     public void UpdateAdress() throws Exception {
 
