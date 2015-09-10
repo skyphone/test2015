@@ -36,7 +36,7 @@
             android:value="ZSIVZIFjjMPFb4xZle0QGIwG" />
 
         <activity
-            android:name=".MyVolley"
+            android:name=".ViewPagerActivity"
             android:hardwareAccelerated="false"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyTheme" >
@@ -61,6 +61,9 @@
                     android:host="gizmos"
                     android:scheme="example" />
             </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"
+                />
         </activity>
         <activity android:name="otcapp.com.qrcode.SimpleScannerActivity" />
         <activity
@@ -71,6 +74,8 @@
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote">
         </service>
 
+        <service android:name=".MyService"></service>
+        <service android:name=".BinddService"></service>
     </application>
 
 </manifest>
