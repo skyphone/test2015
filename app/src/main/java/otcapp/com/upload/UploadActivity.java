@@ -9,18 +9,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-
-import java.io.File;
+import java.io.FileNotFoundException;
 
 import caisheng.com.search.R;
-import caisheng.com.search.VolleryInstance;
 import single.Singleton;
 import single.Test;
 
@@ -54,24 +49,22 @@ public class UploadActivity extends ActionBarActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == 100) {
             String imagePath = getRealPathFromURI(this, data.getData());//获取图片的路径
-            Bitmap bitmap = BitmapFactory.decodeFile(imagePath);//转为文件
-            ((ImageView) findViewById(R.id.imageView3)).setImageBitmap(bitmap);
-            File f1 = new File(getRealPathFromURI(this, data.getData()));
-            File f2 = new File(getRealPathFromURI(this, data.getData()));
-            File[] f=new File[]{f1,f2};
-            MultipartRequest multipartRequest = new MultipartRequest(url, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError volleyError) {
-                    Log.e("error", volleyError.toString());
-                }
-            }, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String s) {
-                    Log.e("response", s);
-                    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-                }
-            }, f);
-            VolleryInstance.getInstance(this).addToRequestQueue(multipartRequest);
+            try {
+                Bitmap b=BitmapFactory.decodeStream(getContentResolver().openInputStream(data.getData()));
+               // Bitmap bitmap = BitmapFactory.decodeFile(imagePath);//转为文件
+                ((ImageView) findViewById(R.id.imageView3)).setImageBitmap(b);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        /*    File f1 = new File(getRealPathFromURI(this, data.getData()));
+            Log.e("length",bitmap.getByteCount()+"");
+            // First decode with inJustDecodeBounds=true to check dimensions
+             BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = 4;//压缩图片
+           Bitmap bitmap1= BitmapFactory.decodeFile(imagePath, options);
+            Log.e("length",bitmap1.getByteCount()+"");*/
+
         }
     }
 
@@ -89,5 +82,12 @@ public class UploadActivity extends ActionBarActivity {
             }
         }
     }
+
+ /*   public void scale(){
+        BitmapFactory.Options options=new BitmapFactory.Options();
+        options.inJustDecodeBounds=true;
+        options.inSampleSize=2;//二分之一
+        BitmapFactory.decodeFile(file,options);
+    }*/
 
 }

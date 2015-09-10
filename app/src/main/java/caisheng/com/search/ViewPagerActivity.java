@@ -1,7 +1,11 @@
 package caisheng.com.search;
 
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -11,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,7 +24,7 @@ import java.io.IOException;
 
 import caisheng.com.search.dummy.SimpleCrypto;
 
-public class ViewPagerActivity extends FragmentActivity {
+public class ViewPagerActivity extends FragmentActivity implements FragCallback{
     ViewPager viewPager;
     FragmentPagerAdapter adapter;
     public Fragment[] fragments=new Fragment[3];
@@ -98,6 +103,31 @@ public class ViewPagerActivity extends FragmentActivity {
                }
 
 
+        Intent intent=new Intent(this,BinddService.class);
+        bindService(intent, new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                    new Thread(){
+                        @Override
+                        public void run() {
+                            super.run();
+                            for (int i = 0; i <20 ; i++) {
+                                try {
+                                    Thread.sleep(4000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                                Log.e("service",i+"asdfad");
+                            }
+                        }
+                    }.start();
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+            }
+        },BIND_AUTO_CREATE);
 
     }
 
@@ -138,5 +168,10 @@ public class ViewPagerActivity extends FragmentActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void myItemClick(int pos) {
+        Toast.makeText(getApplicationContext(),pos+"",Toast.LENGTH_SHORT).show();
     }
 }
