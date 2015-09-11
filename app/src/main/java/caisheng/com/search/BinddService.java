@@ -11,15 +11,14 @@ import android.util.Log;
  * Created by abc on 2015/9/10.
  */
 public class BinddService extends Service {
-    Binder binder=new Binder(){
 
-    };
+
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         Log.e("service", "onbind");
-        return binder;
+        return new Binder();
     }
 
     @Override

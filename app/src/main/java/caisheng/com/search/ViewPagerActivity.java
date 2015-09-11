@@ -107,6 +107,8 @@ public class ViewPagerActivity extends FragmentActivity implements FragCallback{
         bindService(intent, new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
+
+
                     new Thread(){
                         @Override
                         public void run() {
