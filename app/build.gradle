@@ -13,15 +13,15 @@ android {
 
 
 
-    signingConfigs {
+/*    signingConfigs {
         //你自己的keystore信息
-        release {
+    *//*    release {
             keyAlias 'aolaigo'
             keyPassword '123456'
             storeFile file('E:/test.jks')
             storePassword '123456'
-        }
-    }
+        }*//*
+    }*/
     lintOptions {
         checkReleaseBuilds false
         // Or, if you prefer, you can continue to check for errors in release builds,
@@ -30,29 +30,13 @@ android {
     }
 
     buildTypes {
-        debug {
-            signingConfig signingConfigs.release
-        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
-
-    productFlavors {
-
-        huawei {
-            minSdkVersion 14
-            targetSdkVersion 21
-            manifestPlaceholders =[Value: "huawei"]
-        }
-        xiaomi {
-            minSdkVersion 14
-            targetSdkVersion 21
-            manifestPlaceholders =[Value: "xiaomi"]
-        }
-    }
 }
 
 dependencies {
