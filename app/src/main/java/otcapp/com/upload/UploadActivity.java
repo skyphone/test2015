@@ -38,11 +38,13 @@ public class UploadActivity extends ActionBarActivity {
     }
 
     public void select(View v) {
-        Intent intent = new Intent(Intent.ACTION_PICK, null);
+       /* Intent intent = new Intent(Intent.ACTION_PICK, null);
         intent.setDataAndType(
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                "image/*");
-        startActivityForResult(intent, 100);
+                "image*//*");
+        startActivityForResult(intent, 100);*/
+        startActivity(new Intent(this,ChoosePicActivity.class));
+
     }
 
     @Override
@@ -57,12 +59,13 @@ public class UploadActivity extends ActionBarActivity {
                 e.printStackTrace();
             }
 
-        /*    File f1 = new File(getRealPathFromURI(this, data.getData()));
-            Log.e("length",bitmap.getByteCount()+"");
+         /*   File f1 = new File(getRealPathFromURI(this, data.getData()));
+            Log.e("length", bitmap.getByteCount() + "");
             // First decode with inJustDecodeBounds=true to check dimensions
              BitmapFactory.Options options = new BitmapFactory.Options();
             options.inSampleSize = 4;//压缩图片
            Bitmap bitmap1= BitmapFactory.decodeFile(imagePath, options);
+
             Log.e("length",bitmap1.getByteCount()+"");*/
 
         }

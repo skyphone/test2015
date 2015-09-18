@@ -81,4 +81,5 @@
     <string name="title_activity_upload">UploadActivity</string>
     <string name="title_activity_qrcode">QRCodeActivity</string>
     <string name="title_activity_car">CarActivity</string>
+    <string name="title_activity_choose_pic">ChoosePicActivity</string>
 </resources>
