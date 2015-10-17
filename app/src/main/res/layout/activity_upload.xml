@@ -1,10 +1,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_height="match_parent"
     tools:context="otcapp.com.upload.UploadActivity">
+
+    <!--Toolbar-->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:minHeight="?attr/actionBarSize">
+    </android.support.v7.widget.Toolbar>
 
 
     <Button
@@ -13,11 +19,9 @@
         android:text="select"
         android:id="@+id/button9"
         android:onClick="select"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/toolbar_layout"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="35dp"
-        android:layout_marginStart="35dp" />
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:layout_width="fill_parent"
@@ -25,5 +29,56 @@
         android:id="@+id/imageView3"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="notify"
+        android:id="@+id/button17"
+        android:onClick="noti"
+        android:layout_below="@+id/toolbar_layout"
+        android:layout_toRightOf="@+id/button9"
+        android:layout_toEndOf="@+id/button9" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button18"
+        android:onClick="anim1"
+        android:layout_below="@+id/toolbar_layout"
+        android:layout_toRightOf="@+id/button17"
+        android:layout_toEndOf="@+id/button17"
+        android:background="#1c6697" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get video"
+        android:id="@+id/button20"
+        android:onClick="getAllVedio"
+        android:layout_above="@+id/imageView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="camera"
+        android:onClick="camera"
+        android:id="@+id/button21"
+        android:layout_alignTop="@+id/button20"
+        android:layout_toRightOf="@+id/button20"
+        android:layout_toEndOf="@+id/button20" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:onClick="playWebVideo"
+        android:layout_height="wrap_content"
+        android:text="play video"
+        android:id="@+id/button24"
+        android:layout_above="@+id/imageView3"
+        android:layout_toRightOf="@+id/button21"
+        android:layout_toEndOf="@+id/button21" />
 
 </RelativeLayout>

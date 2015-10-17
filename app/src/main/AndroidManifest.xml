@@ -18,7 +18,7 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 这个权限用于访问GPS定位 -->
@@ -27,7 +27,6 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <application android:name=".MyApplication" >
-
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="ZSIVZIFjjMPFb4xZle0QGIwG" />
@@ -57,7 +56,6 @@
                     android:host="gizmos"
                     android:scheme="example" />
             </intent-filter>
-
         </activity>
         <activity android:name="otcapp.com.qrcode.SimpleScannerActivity" />
         <activity
@@ -76,6 +74,14 @@
         <activity
             android:name="otcapp.com.upload.ChoosePicActivity"
             android:label="@string/title_activity_choose_pic" >
+        </activity>
+        <activity
+            android:name="otcapp.com.login.AnimActivity"
+            android:theme="@style/Theme.MyTheme" >
+        </activity>
+        <activity android:name="otcapp.com.upload.CameraActivity" >
+        </activity>
+        <activity android:name="otcapp.com.upload.PlayWebVideoActivity" >
         </activity>
     </application>
 
