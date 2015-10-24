@@ -38,7 +38,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Su
     int filename=0;
     int timeCount=0;
     TextView tv_time;
-    Timer T;
+    Timer T;//计时器
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,15 +51,13 @@ public class CameraActivity extends Activity implements View.OnClickListener, Su
         tv_time=(TextView)findViewById(R.id.activity_camear_tv);
         holder = cameraView.getHolder();
         holder.addCallback(this);
-        // holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-
         cameraView.setClickable(true);
         cameraView.setOnClickListener(this);
-
-
-
     }
 
+    /**
+     * 初始化录制参数
+     */
     private void initRecorder() {
         recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
         recorder.setVideoSource(MediaRecorder.VideoSource.DEFAULT);
@@ -75,7 +73,6 @@ public class CameraActivity extends Activity implements View.OnClickListener, Su
 
     private void prepareRecorder() {
         recorder.setPreviewDisplay(holder.getSurface());
-
         try {
             recorder.prepare();
         } catch (IllegalStateException e) {
@@ -87,6 +84,10 @@ public class CameraActivity extends Activity implements View.OnClickListener, Su
         }
     }
 
+    /**
+     * 界面点击开始录制，再点击停止录制
+     * @param v
+     */
     public void onClick(View v) {
 
         if (recording) {
@@ -116,12 +117,8 @@ public class CameraActivity extends Activity implements View.OnClickListener, Su
         }
     }
 
-    public void start(View view) throws IOException {
 
 
-        appendVideo2();
-
-    }
 
     public void surfaceCreated(SurfaceHolder holder) {
         prepareRecorder();
@@ -140,7 +137,15 @@ public class CameraActivity extends Activity implements View.OnClickListener, Su
         finish();
     }
 
+    /**
+     * 开始拼接视频
+     * @param view
+     * @throws IOException
+     */
+    public void start(View view) throws IOException {
+        appendVideo2();
 
+    }
 
     public void appendVideo2(){
         new AsyncTask<Void, Void, Void>() {
@@ -187,7 +192,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Su
                             .build(result);
 
                     FileChannel fc = new RandomAccessFile(String.format(Environment
-                            .getExternalStorageDirectory() + "/wishbyvideo.mp4"),
+                            .getExternalStorageDirectory() + "/append.mp4"),
                             "rw").getChannel();
                     out.writeContainer(fc);
                     fc.close();
