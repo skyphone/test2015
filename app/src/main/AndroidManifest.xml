@@ -83,6 +83,19 @@
         </activity>
         <activity android:name="otcapp.com.upload.PlayWebVideoActivity" >
         </activity>
+        <activity android:name="august.MainActivity"/>
+        <activity android:name=".AutoScrollActivity"/>
+        <activity android:name=".BaseHtmlActivity"/>
+        <activity android:name=".HtmlActivity"/>
+        <activity android:name=".My1"/>
+        <activity android:name=".My2"></activity>
+        <activity android:name=".My4"></activity>
+        <activity android:name=".MyVolley"/>
+        <activity android:name=".ViewPagerActivity"/>
+        <activity android:name="otcapp.com.map.MapActivity"></activity>
+
+
+
     </application>
 
 </manifest>

@@ -1,13 +1,13 @@
 package otcapp.com.qrcode;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
 import caisheng.com.search.R;
 
-public class QRCodeActivity extends ActionBarActivity {
+public class QRCodeActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

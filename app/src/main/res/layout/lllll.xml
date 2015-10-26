@@ -9,7 +9,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="收货地址"
         android:id="@+id/button_province"
         android:onClick="show"
         android:layout_gravity="center_horizontal" />

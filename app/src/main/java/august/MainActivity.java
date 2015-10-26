@@ -21,7 +21,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.io.RandomAccessFile;
 
 import august.charting.PieChart;
 import caisheng.com.search.R;

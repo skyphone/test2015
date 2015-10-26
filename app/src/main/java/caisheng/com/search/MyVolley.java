@@ -1,8 +1,8 @@
 package caisheng.com.search;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +36,7 @@ import java.util.Map;
 /**
  * Created by abc on 2015/6/30.
  */
-public class MyVolley extends ActionBarActivity {
+public class MyVolley extends Activity {
 
     public static final String TAG = "tag";
     ImageView imageView;

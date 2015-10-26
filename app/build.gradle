@@ -51,4 +51,5 @@ dependencies {
     compile 'com.sothree.slidinguppanel:library:3.1.1'
     compile 'me.dm7.barcodescanner:zbar:1.5'
     compile 'com.danikula:videocache:2.2.0'
+    compile 'io.reactivex:rxjava:1.0.10'
 }
