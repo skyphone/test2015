@@ -2,7 +2,6 @@ package caisheng.com.search;
 
 import android.app.Application;
 
-import com.baidu.mapapi.SDKInitializer;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 
@@ -22,7 +21,7 @@ public class MyApplication extends Application {
                 .build();
         Fresco.initialize(this);
         loginInfo=new LoginInfo();
-        SDKInitializer.initialize(getApplicationContext());   //baidu map
+       // SDKInitializer.initialize(getApplicationContext());   //baidu map
     }
 
 

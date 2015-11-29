@@ -2,6 +2,7 @@ package otcapp.com.upload;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.ActivityOptions;
 import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
@@ -198,9 +199,12 @@ public class UploadActivity extends AppCompatActivity {
             }
         }
     }
-
+    private static final String KEY_ID = "ViewTransitionValues:id";
     public void PieChart(View v) {
-        startActivity(new Intent(this, MainActivity.class));
+        Intent intent=new Intent(this, MainActivity.class);
+        intent.putExtra(KEY_ID,"hello");
+        ActivityOptions activityOptions=ActivityOptions.makeSceneTransitionAnimation(this,v,"hello");
+        startActivity(intent,activityOptions.toBundle());
     }
 
     public void CreditsParams(View v) {
@@ -243,5 +247,7 @@ public class UploadActivity extends AppCompatActivity {
         startActivity(new Intent(this, ChoosePicActivity.class));
     }
 
-
+    public void viewanim(View v){
+        startActivity(new Intent(this, anim.AnimActivity.class));
+    }
 }
