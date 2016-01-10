@@ -29,11 +29,13 @@ import java.util.Random;
 import august.MainActivity;
 import caisheng.com.search.AutoScrollActivity;
 import caisheng.com.search.BaseHtmlActivity;
+import caisheng.com.search.Main22Activity;
 import caisheng.com.search.My1;
 import caisheng.com.search.My2;
 import caisheng.com.search.My4;
 import caisheng.com.search.MyVolley;
 import caisheng.com.search.R;
+import caisheng.com.search.TransitionsActivity;
 import caisheng.com.search.ViewPagerActivity;
 import otcapp.com.login.AnimActivity;
 import otcapp.com.map.MapActivity;
@@ -248,6 +250,18 @@ public class UploadActivity extends AppCompatActivity {
     }
 
     public void viewanim(View v){
+
         startActivity(new Intent(this, anim.AnimActivity.class));
+    }
+
+    public void transition(View v){
+        startActivity(new Intent(this, TransitionsActivity.class));
+    }
+    public void drawpoint(View v){
+        startActivity(new Intent(this,DrawPointActivity.class));
+    }
+
+    public void beautiful(View v){
+        startActivity(new Intent(this, Main22Activity.class));
     }
 }

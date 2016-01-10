@@ -19,6 +19,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
     <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 这个权限用于访问GPS定位 -->
@@ -66,18 +67,18 @@
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote"></service>
+            android:process=":remote" />
         <service android:name=".MyService" />
         <service android:name=".BinddService" />
 
         <activity
             android:name="otcapp.com.upload.ChoosePicActivity"
-            android:label="@string/title_activity_choose_pic"></activity>
+            android:label="@string/title_activity_choose_pic" />
         <activity
             android:name="otcapp.com.login.AnimActivity"
-            android:theme="@style/Theme.MyTheme"></activity>
-        <activity android:name="otcapp.com.upload.CameraActivity"></activity>
-        <activity android:name="otcapp.com.upload.PlayWebVideoActivity"></activity>
+            android:theme="@style/Theme.MyTheme" />
+        <activity android:name="otcapp.com.upload.CameraActivity" />
+        <activity android:name="otcapp.com.upload.PlayWebVideoActivity" />
         <activity android:name="august.MainActivity" />
         <activity android:name=".AutoScrollActivity" />
         <activity android:name=".BaseHtmlActivity" />
@@ -88,7 +89,11 @@
         <activity android:name=".MyVolley" />
         <activity android:name=".ViewPagerActivity" />
         <activity android:name="otcapp.com.map.MapActivity" />
-        <activity android:name="anim.AnimActivity"></activity>
+        <activity android:name="anim.AnimActivity" />
+        <activity android:name=".TransitionsActivity" />
+        <activity android:name="otcapp.com.upload.DrawPointActivity" />
+        <activity android:name=".Main22Activity"></activity>
+        <activity android:name="otcapp.com.map.MockGpsActivity"/>
     </application>
 
 </manifest>

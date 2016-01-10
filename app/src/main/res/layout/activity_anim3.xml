@@ -14,7 +14,6 @@
 
     <ImageView
         android:id="@+id/img_list"
-        android:src="@drawable/b"
         android:layout_width="match_parent"
         android:layout_height="200dp"
        />

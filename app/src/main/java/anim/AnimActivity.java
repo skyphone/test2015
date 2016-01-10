@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import caisheng.com.search.R;
 
 public class AnimActivity extends Activity {
+
     ImageView imageView6;
     ImageView imgList;
     AnimationDrawable animationDrawable;
@@ -50,6 +51,11 @@ public class AnimActivity extends Activity {
             }
         });
 
+//ceil()是天花板，即向上取整。floor是地板，向下取整。round是四舍五入。
+        double a=Math.log(16);
+        double b=Math.log10(100);//以10为底的对数
+        double c=Math.pow(2, 4);//x的y次方
+        double d=Math.sqrt(9);//平方根
 
 
     }
