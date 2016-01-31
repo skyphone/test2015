@@ -86,14 +86,23 @@
         <activity android:name=".My1" />
         <activity android:name=".My2" />
         <activity android:name=".My4" />
-        <activity android:name=".MyVolley" />
+        <activity android:name=".MyVolley">
+
+        </activity>
         <activity android:name=".ViewPagerActivity" />
         <activity android:name="otcapp.com.map.MapActivity" />
         <activity android:name="anim.AnimActivity" />
         <activity android:name=".TransitionsActivity" />
         <activity android:name="otcapp.com.upload.DrawPointActivity" />
-        <activity android:name=".Main22Activity"></activity>
-        <activity android:name="otcapp.com.map.MockGpsActivity"/>
+        <activity android:name=".Main22Activity" />
+        <activity android:name="otcapp.com.map.MockGpsActivity" />
+        <activity android:name="shop.test.ShopActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

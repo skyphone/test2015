@@ -24,7 +24,6 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -98,7 +97,7 @@ public class MyVolley extends Activity {
         tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("tab1").setContent(R.id.tab1));
         tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("tab2").setContent(R.id.tab2));*/
 
-        try {
+   /*     try {
             String j = "{\"desc\":[{\"type\":\"img\",\"value\":\"M00/11/5C/CgkeMlVZnxTS_LrwAAEBK7dQT54977.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/00/0E/CgkeM1VZponBBe1CAAEX1ZbSng0353.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/11/5C/CgkeMlVZnxTRKx_EAADFZi1v43U442.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/11/60/CgkeMlVZpomSeRjeAAExsSyJ-co089.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/11/5C/CgkeMlVZnxSzUM5fAAExRRgdSE0470.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/00/0E/CgkeM1VZpomSBZEhAAELElVWZkM211.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/11/60/CgkeMlVZponwnkx9AAQa30EVCa0793.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/00/0E/CgkeM1VZpomBqQetAASZsl5Qj4E390.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/11/60/CgkeMlVZporhiztIAATw9UGmbS4187.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/00/0E/CgkeM1VZpoqQhYVlAAT4zUNQE48841.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/11/60/CgkeMlVZpovDlu0YAAZGx89rYE4146.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/00/0B/CgkeM1VZnxXROLVwAAD7QehT1Yg758.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/00/0E/CgkeM1VZpoqDnskWAADyaofGF8k225.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/11/60/CgkeMlVZpovjs3D5AAQPrQkesj4744.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/00/0E/CgkeM1VZpovwaSVBAANTNcQMrd4005.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/11/60/CgkeMlVZpouz9nOdAANItZrQ0gc106.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/00/0E/CgkeM1VZpouDrpe8AARoK-NqT6g800.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/11/60/CgkeMlVZpoySTneDAAVQK0_Majw273.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/11/5C/CgkeMlVZnxWy9ScxAAIweogh0nk985.jpg\",\"size\":\"0\"},{\"type\":\"img\",\"value\":\"M00/00/0B/CgkeM1VZnxTgt0tGAAMSdJT3y6M647.jpg\",\"size\":\"0\"}]}";
             JSONArray jsonArray = new JSONObject(j).optJSONArray("desc");
             String s = "";
@@ -108,7 +107,7 @@ public class MyVolley extends Activity {
            // Log.v("abc", s);
         } catch (JSONException e) {
             e.printStackTrace();
-        }
+        }*/
         try {
            /* sendString(new VolleyCallBack() {
                 @Override
@@ -121,7 +120,6 @@ public class MyVolley extends Activity {
             requestJson();
            */
            // UpdateAdress();
-            json();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -272,6 +270,10 @@ public class MyVolley extends Activity {
 
         VolleryInstance.getInstance(this).addToRequestQueue(jsonRequest);
     }
+
+
+
+
 
     class Datas{
         int error;
