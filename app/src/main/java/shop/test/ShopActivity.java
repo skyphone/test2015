@@ -185,6 +185,9 @@ public class ShopActivity extends Activity {
         JSONObject jsonObject = new JSONObject();
         try {
 
+
+
+
             jsonObject.put("page", 0);
             jsonObject.put("pageCount", 2);
         } catch (JSONException e) {
