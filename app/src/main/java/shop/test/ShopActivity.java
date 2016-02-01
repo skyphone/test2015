@@ -1,10 +1,15 @@
 package shop.test;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -25,11 +30,14 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import caisheng.com.search.R;
 import caisheng.com.search.VolleryInstance;
 
 public class ShopActivity extends Activity {
+    ArrayList<String> files=new ArrayList<>();
+    private String imagUrls="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,22 +50,72 @@ public class ShopActivity extends Activity {
 
 
     /**
+     * 多图选择
+     * @param v
+     */
+    public void multi(View v){
+        Intent chooseIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        chooseIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        startActivityForResult(chooseIntent, 2);
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+                if(requestCode==2&&resultCode==RESULT_OK){
+                    if (data != null) {
+                        files.clear();
+                        ClipData clipData = data.getClipData();
+                        if (clipData != null) {
+                            for (int i = 0; i < clipData.getItemCount(); i++) {
+                                ClipData.Item item = clipData.getItemAt(i);
+                                Uri uri = item.getUri();
+
+                               files.add(uri.getPath());
+                            }
+                        }
+                    }
+                }
+    }
+
+    /**
+     * 提交数据
+     * @param v
+     */
+    public void submitQzone(View v){
+            uploadFile(true);
+    }
+
+
+    /**
      * 文件上次
      */
     public void file(View v){
-        new Thread(){
+        uploadFile(false);
+
+    }
+    /**
+     * 文件上次
+     */
+    private void uploadFile(final boolean send) {
+
+        new AsyncTask<Void,Void,Void>(){
+
             @Override
-            public void run() {
-                super.run();
+            protected Void doInBackground(Void... params) {
                 HttpClient httpClient = new DefaultHttpClient() ;
 
                 HttpPost httpPost = new HttpPost("http://192.168.123.1:8080/Shop/FileUpload");
                 MultipartEntity entity = new MultipartEntity();
-                File file1=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/123");
+              /*  File file1=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/123");
                 File file2=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/2.txt");
-
                 entity.addPart("file", new FileBody(file1));
-                entity.addPart("file", new FileBody(file2));
+                entity.addPart("file", new FileBody(file2));*/
+                for (String s:files) {
+                    File file=new File(s);
+                    entity.addPart("file", new FileBody(file));
+                }
 
                 httpPost.setEntity(entity);
 
@@ -66,18 +124,82 @@ public class ShopActivity extends Activity {
                 try {
                     response = httpClient.execute(httpPost);
                     BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
-                    String json = reader.readLine();
+                    String content = reader.readLine();
+                    JSONObject json= null;
+                    try {
+                        json = new JSONObject(content);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    if(json.optString("status").equals("succ")){
+                        imagUrls=json.optString("list");
+                    }
 
-                    Log.e("ss", json);
+
+
+                    Log.e("ss", content);
                 } catch (ClientProtocolException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
                     Log.e("IOException : "+e, e.getMessage());
 
                 }
+                return null;
             }
-        }.start();
 
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                if(send){
+                    String url = "http://192.168.123.1:8080/Shop/AddQzone";
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        EditText ed=(EditText)findViewById(R.id.editText2);
+                        jsonObject.put("content", ed.getText().toString());
+                        jsonObject.put("images",imagUrls);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject jsonObject) {
+                            Toast.makeText(ShopActivity.this, jsonObject.toString(), Toast.LENGTH_SHORT).show();
+                            Log.e("home", jsonObject.toString());
+                        }
+                    }, null);
+
+                    VolleryInstance.getInstance(ShopActivity.this).addToRequestQueue(jsonRequest);
+                }
+
+            }
+        }.execute();
+
+
+    }
+
+
+    /**
+     * 列表
+     */
+    public void getSpaceList(View v){
+        String url = "http://192.168.123.1:8080/Shop/GetQzoneList";
+        JSONObject jsonObject = new JSONObject();
+        try {
+
+            jsonObject.put("page", 0);
+            jsonObject.put("pageCount", 2);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                Toast.makeText(ShopActivity.this, jsonObject.toString(), Toast.LENGTH_SHORT).show();
+                Log.e("home", jsonObject.toString());
+            }
+        }, null);
+
+
+        VolleryInstance.getInstance(this).addToRequestQueue(jsonRequest);
     }
 
     /**

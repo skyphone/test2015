@@ -36,7 +36,48 @@
         android:text="file"
         android:onClick="file"
         android:id="@+id/button50"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/button49"
+        android:layout_toEndOf="@+id/button49"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2"
         android:layout_below="@+id/button48"
-        android:layout_toLeftOf="@+id/button49"
-        android:layout_toStartOf="@+id/button49" />
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="image"
+        android:id="@+id/button51"
+        android:onClick="multi"
+        android:layout_below="@+id/editText2"
+        android:layout_alignRight="@+id/button48"
+        android:layout_alignEnd="@+id/button48" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="submit"
+        android:id="@+id/button52"
+        android:onClick="submitQzone"
+        android:layout_alignBottom="@+id/button51"
+        android:layout_alignRight="@+id/editText2"
+        android:layout_alignEnd="@+id/editText2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="getspacelist"
+        android:onClick="getSpaceList"
+        android:id="@+id/button53"
+        android:layout_below="@+id/button51"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="31dp" />
+
 </RelativeLayout>
