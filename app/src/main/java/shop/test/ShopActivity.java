@@ -38,6 +38,7 @@ import caisheng.com.search.VolleryInstance;
 public class ShopActivity extends Activity {
     ArrayList<String> files=new ArrayList<>();
     private String imagUrls="";
+    public static String baseUrl="http://192.168.1.133:8080/Shop/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +107,7 @@ public class ShopActivity extends Activity {
             protected Void doInBackground(Void... params) {
                 HttpClient httpClient = new DefaultHttpClient() ;
 
-                HttpPost httpPost = new HttpPost("http://192.168.123.1:8080/Shop/FileUpload");
+                HttpPost httpPost = new HttpPost(baseUrl+"FileUpload");
                 MultipartEntity entity = new MultipartEntity();
               /*  File file1=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/123");
                 File file2=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/2.txt");
@@ -140,8 +141,10 @@ public class ShopActivity extends Activity {
                     Log.e("ss", content);
                 } catch (ClientProtocolException e) {
                     e.printStackTrace();
+
                 } catch (IOException e) {
-                    Log.e("IOException : "+e, e.getMessage());
+                    Log.e("IOException : " + e, e.getMessage());
+
 
                 }
                 return null;
@@ -150,7 +153,7 @@ public class ShopActivity extends Activity {
             @Override
             protected void onPostExecute(Void aVoid) {
                 if(send){
-                    String url = "http://192.168.123.1:8080/Shop/AddQzone";
+                    String url = baseUrl+"AddQzone";
                     JSONObject jsonObject = new JSONObject();
                     try {
                         EditText ed=(EditText)findViewById(R.id.editText2);
@@ -181,35 +184,14 @@ public class ShopActivity extends Activity {
      * 列表
      */
     public void getSpaceList(View v){
-        String url = "http://192.168.123.1:8080/Shop/GetQzoneList";
-        JSONObject jsonObject = new JSONObject();
-        try {
-
-
-
-
-            jsonObject.put("page", 0);
-            jsonObject.put("pageCount", 2);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject jsonObject) {
-                Toast.makeText(ShopActivity.this, jsonObject.toString(), Toast.LENGTH_SHORT).show();
-                Log.e("home", jsonObject.toString());
-            }
-        }, null);
-
-
-        VolleryInstance.getInstance(this).addToRequestQueue(jsonRequest);
+       startActivity(new Intent(this,QzoneListActivity.class));
     }
 
     /**
      * 注册
      */
     public void regis(View v){
-        String url = "http://192.168.123.1:8080/Shop/Register";
+        String url = baseUrl+"Register";
         JSONObject jsonObject = new JSONObject();
         try {
 
