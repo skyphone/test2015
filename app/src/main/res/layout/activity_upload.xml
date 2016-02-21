@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="otcapp.com.upload.UploadActivity">
+    tools:context=".com.upload.UploadActivity">
 
     <!--Toolbar-->
     <android.support.v7.widget.Toolbar
@@ -81,7 +81,6 @@
         android:id="@+id/button26"
         android:onClick="PieChart"
         android:transitionName="hello"
-        android:src="@drawable/ic_launcher"
         android:layout_alignBottom="@+id/button18"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

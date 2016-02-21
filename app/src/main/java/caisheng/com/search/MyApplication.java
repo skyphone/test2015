@@ -5,7 +5,7 @@ import android.app.Application;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 
-import otcapp.com.login.LoginInfo;
+import caisheng.com.search.com.login.LoginInfo;
 
 /**
  * Created by abc on 2015/4/22.

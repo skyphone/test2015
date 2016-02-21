@@ -9,7 +9,7 @@
         android:layout_height="fill_parent"
         android:layout_gravity="center" />
 
-    <otcapp.com.twodimcode.view.ViewfinderView
+    <caisheng.com.search.com.twodimcode.view.ViewfinderView
         android:id="@+id/viewfinder_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

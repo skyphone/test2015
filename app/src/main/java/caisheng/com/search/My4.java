@@ -66,7 +66,7 @@ public class My4 extends Activity {
 
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(
                 this);
-        builderSingle.setIcon(R.drawable.ic_launcher);
+        builderSingle.setIcon(R.drawable.abc);
         builderSingle.setTitle("Select One Name:-");
         builderSingle.setNegativeButton("cancel",
                 new DialogInterface.OnClickListener() {

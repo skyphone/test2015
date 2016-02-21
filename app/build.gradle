@@ -2,16 +2,15 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    buildToolsVersion "23.0.1"
     defaultConfig {
         applicationId "caisheng.com.search"
         minSdkVersion 16
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
+
     }
-
-
 
 /*    signingConfigs {
         //你自己的keystore信息
@@ -31,10 +30,10 @@ android {
 
     buildTypes {
 
-        release {
+      /*  release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+        }*/
     }
 
 }
@@ -47,9 +46,11 @@ dependencies {
     compile 'com.android.support:design:22.2.0'
     compile 'com.facebook.fresco:fresco:0.6.0'
     compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'com.github.liuguangqiang.swipeback:library:1.0.2@aar'
     compile 'com.sothree.slidinguppanel:library:3.1.1'
     compile 'me.dm7.barcodescanner:zbar:1.5'
     compile 'com.danikula:videocache:2.2.0'
     compile 'io.reactivex:rxjava:1.0.10'
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta1'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta1'
+
 }

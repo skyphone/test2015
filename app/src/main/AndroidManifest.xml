@@ -35,7 +35,7 @@
             android:value="ZSIVZIFjjMPFb4xZle0QGIwG" />
 
         <activity
-            android:name="otcapp.com.upload.UploadActivity"
+            android:name=".com.upload.UploadActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyTheme">
             <intent-filter>
@@ -60,9 +60,9 @@
                     android:scheme="example" />
             </intent-filter>
         </activity>
-        <activity android:name="otcapp.com.qrcode.SimpleScannerActivity" />
+        <activity android:name=".com.qrcode.SimpleScannerActivity" />
         <activity
-            android:name="otcapp.com.qrcode.QRCodeActivity"
+            android:name=".com.qrcode.QRCodeActivity"
             android:label="@string/title_activity_qrcode" />
 
         <!-- 定位 -->
@@ -74,36 +74,61 @@
         <service android:name=".BinddService" />
 
         <activity
-            android:name="otcapp.com.upload.ChoosePicActivity"
+            android:name=".com.upload.ChoosePicActivity"
             android:label="@string/title_activity_choose_pic" />
         <activity
-            android:name="otcapp.com.login.AnimActivity"
+            android:name=".com.login.AnimActivity"
             android:theme="@style/Theme.MyTheme" />
-        <activity android:name="otcapp.com.upload.CameraActivity" />
-        <activity android:name="otcapp.com.upload.PlayWebVideoActivity" />
-        <activity android:name="august.MainActivity" />
+        <activity android:name=".com.upload.CameraActivity" />
+        <activity android:name=".com.upload.PlayWebVideoActivity" />
+        <activity android:name=".dummy.charting.MainActivity" />
         <activity android:name=".AutoScrollActivity" />
         <activity android:name=".BaseHtmlActivity" />
         <activity android:name=".HtmlActivity" />
         <activity android:name=".My1" />
         <activity android:name=".My2" />
         <activity android:name=".My4" />
-        <activity android:name=".MyVolley"></activity>
+        <activity android:name=".MyVolley" />
         <activity android:name=".ViewPagerActivity" />
-        <activity android:name="otcapp.com.map.MapActivity" />
-        <activity android:name="anim.AnimActivity" />
+        <activity android:name=".com.map.MapActivity" />
+        <activity android:name=".AnimActivity" />
         <activity android:name=".TransitionsActivity" />
-        <activity android:name="otcapp.com.upload.DrawPointActivity" />
+        <activity android:name=".com.upload.DrawPointActivity" />
         <activity android:name=".Main22Activity" />
-        <activity android:name="otcapp.com.map.MockGpsActivity" />
-        <activity android:name="shop.test.ShopActivity">
+        <activity android:name=".com.map.MockGpsActivity" />
+        <activity android:name=".test.ShopActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="shop.test.QzoneListActivity"></activity>
+        <activity android:name=".test.QzoneListActivity" />
+
+
+
+
+
+
+        <!--shop -->
+
+
+
+
+
+
+
+
+        <activity android:name="shopping.main.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+
     </application>
 
 </manifest>

@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-    <august.charting.PieChart
+    <caisheng.com.search.dummy.charting.PieChart
             android:id="@+id/Pie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
