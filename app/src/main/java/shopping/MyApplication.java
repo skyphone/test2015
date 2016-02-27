@@ -1,11 +1,11 @@
-package caisheng.com.search;
+package shopping;
 
 import android.app.Application;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 
-import caisheng.com.search.com.login.LoginInfo;
+import shopping.main.UserInfo;
 
 /**
  * Created by abc on 2015/4/22.
@@ -13,7 +13,7 @@ import caisheng.com.search.com.login.LoginInfo;
 public class MyApplication extends
         Application {
 
-    public LoginInfo loginInfo;
+    public UserInfo userInfo;
 
     @Override
     public void onCreate() {
@@ -21,8 +21,8 @@ public class MyApplication extends
         ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
                 .build();
         Fresco.initialize(this);
-        loginInfo = new LoginInfo();
-        // SDKInitializer.initialize(getApplicationContext());   //baidu map
+        userInfo=new UserInfo();
+
     }
 
 

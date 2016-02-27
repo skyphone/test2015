@@ -19,8 +19,8 @@ public class MyImageLoader {
 
     public MyImageLoader(Context context) {
         options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.mipmap.ic_launcher)
-                .showImageOnFail(R.mipmap.ic_launcher)
+                .showImageOnLoading(R.drawable.i)
+                .showImageOnFail(R.drawable.i)
                 .cacheInMemory(false)
                 .cacheOnDisk(true)
                 .imageScaleType(ImageScaleType.IN_SAMPLE_INT)

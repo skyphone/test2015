@@ -27,6 +27,7 @@ public class HomeActivity extends Activity {
         mContent = new Fragment();
         homeFragment = new HomeFragment();
         switchContent(mContent, homeFragment);
+
     }
 
     public void switchContent(Fragment from, Fragment to) {

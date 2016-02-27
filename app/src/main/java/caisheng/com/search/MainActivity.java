@@ -53,10 +53,10 @@ public class MainActivity extends Activity {
 
 
     public void noti(){
-        Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.mipmap.mm);
+        Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.drawable.a);
         // Base notification
         Notification.Builder b = new Notification.Builder(this);
-        b.setSmallIcon(R.mipmap.ic_launcher);
+        b.setSmallIcon(R.drawable.a);
         b.setContentTitle("asdfasdfad");
         b.setContentText("asdfasdfasdfasdfasdfasdfaqwerqwerqwerqwerqwerqwerqer");
         b.setTicker("sfd");

@@ -11,7 +11,6 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
-import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,7 +18,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import caisheng.com.search.MyApplication;
 import caisheng.com.search.R;
 import caisheng.com.search.VolleryInstance;
 
@@ -56,7 +54,7 @@ public class LoginActivity extends Activity {
                 try {
                     JSONObject jsonObject=new JSONObject(s);
                     if(jsonObject.optString("status").equals("100")){
-                        ((MyApplication)getApplication()).loginInfo=new Gson().fromJson(jsonObject.optString("data"),LoginInfo.class);
+                        //((MyApplication)getApplication()).loginInfo=new Gson().fromJson(jsonObject.optString("data"),LoginInfo.class);
                         Toast.makeText(getApplicationContext(),"登陆成功",Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
