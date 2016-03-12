@@ -5,12 +5,23 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
+import com.google.gson.JsonObject;
 
 import caisheng.com.search.R;
+import caisheng.com.search.test.ShopActivity;
+import caisheng.com.search.test.network.Qzone;
+import retrofit.Callback;
+import retrofit.GsonConverterFactory;
+import retrofit.Retrofit;
+import shopping.BaseConfig;
+import shopping.MyApplication;
 import shopping.car.CarFragment;
 import shopping.category.CategoryFragment;
 import shopping.home.HomeFragment;
 import shopping.personal.PersonalFragment;
+import shopping.util.PrefUtils;
 
 
 public class HomeActivity extends Activity {
@@ -27,6 +38,8 @@ public class HomeActivity extends Activity {
         mContent = new Fragment();
         homeFragment = new HomeFragment();
         switchContent(mContent, homeFragment);
+
+
 
     }
 
@@ -66,5 +79,49 @@ public class HomeActivity extends Activity {
             personalFragment = new PersonalFragment();
         }
         switchContent(mContent, personalFragment);
+    }
+
+    // 退出程序 private static long currenttime;
+    long waitTime = 2000;
+    long touchTime = 0;
+
+    @Override
+    public void onBackPressed() {
+            long currentTime = System.currentTimeMillis();// 退出功能
+            if ((currentTime - touchTime) >= waitTime) {
+                Toast.makeText(HomeActivity.this, "再按一次退出", Toast.LENGTH_SHORT).show();
+                touchTime = currentTime;
+            } else {
+                android.os.Process.killProcess(android.os.Process.myPid());
+                finish();
+            }
+
+    }
+
+
+    public void login(){
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("userName",PrefUtils.getFromPrefs(this,BaseConfig.USERNAME,""));
+        jsonObject.addProperty("passWord",PrefUtils.getFromPrefs(this,BaseConfig.PASSWORD,""));
+
+        Retrofit retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(ShopActivity.baseUrl).build();
+        retrofit.create(Qzone.class).login(jsonObject).enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(retrofit.Response<JsonObject> response) {
+                JsonObject object=response.body();
+                if(object.get("status").getAsString().equals("succ")){
+                    Toast.makeText(HomeActivity.this, object.get("info").getAsString(), Toast.LENGTH_SHORT).show();
+                    ((MyApplication)getApplication()).userInfo.userName=PrefUtils.getFromPrefs(HomeActivity.this,BaseConfig.USERNAME,"");
+                }else{
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
     }
 }
