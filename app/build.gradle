@@ -52,5 +52,5 @@ dependencies {
     compile 'io.reactivex:rxjava:1.0.10'
     compile 'com.squareup.retrofit:retrofit:2.0.0-beta1'
     compile 'com.squareup.retrofit:converter-gson:2.0.0-beta1'
-
+    compile 'org.greenrobot:eventbus:3.0.0'
 }
