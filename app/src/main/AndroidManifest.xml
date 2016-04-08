@@ -132,6 +132,9 @@
         </activity>
         <activity android:name=".eventbus.EventBus2Activity" >
         </activity>
+        <activity android:name=".com.pay.wxpay.WXPayEntryActivity" android:exported="true" android:launchMode="singleTop"></activity>
+        <activity android:name=".com.pay.alipay.TestAliPayActivity"></activity>
+        <activity android:name=".com.pay.wxpay.WxpayActivity"></activity>
     </application>
 
 </manifest>
