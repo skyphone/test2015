@@ -3,7 +3,7 @@ package caisheng.com.search.com.login;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,25 +18,32 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import caisheng.com.search.R;
 import caisheng.com.search.VolleryInstance;
 
 public class LoginActivity extends Activity {
     String url = "http://otcapp.hkbf.com.cn/api/ApiUser/Login";
-    EditText edName, edPass;
 
-    String line="this is .the line";
-    String pattern="\\d";
+    @Bind(R.id.ed_username)
+    EditText edName;
+    @Bind(R.id.ed_pass)
+    EditText edPass;
+    @Bind(R.id.button8)
+    Button button8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        edName = (EditText) findViewById(R.id.ed_username);
-        edPass = (EditText) findViewById(R.id.ed_pass);
+        ButterKnife.bind(this);
     }
 
-    public void login(View v) {
+
+    @OnClick(R.id.button8)
+    public void onClick() {
         final String userNmae = edName.getText().toString();
         final String pass = edPass.getText().toString();
         if (TextUtils.isEmpty(userNmae)) {
@@ -52,12 +59,12 @@ public class LoginActivity extends Activity {
             @Override
             public void onResponse(String s) {
                 try {
-                    JSONObject jsonObject=new JSONObject(s);
-                    if(jsonObject.optString("status").equals("100")){
+                    JSONObject jsonObject = new JSONObject(s);
+                    if (jsonObject.optString("status").equals("100")) {
                         //((MyApplication)getApplication()).loginInfo=new Gson().fromJson(jsonObject.optString("data"),LoginInfo.class);
-                        Toast.makeText(getApplicationContext(),"登陆成功",Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -67,14 +74,13 @@ public class LoginActivity extends Activity {
         }, null) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> map=new HashMap<String, String>();
-                map.put("mobile",userNmae);
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("mobile", userNmae);
                 map.put("pwd", Base64.encode(pass.getBytes()));
                 return map;
             }
         };
 
         VolleryInstance.getInstance(this).addToRequestQueue(request);
-
     }
 }

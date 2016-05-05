@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="caisheng.com.search" >
+    package="caisheng.com.search">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -29,7 +29,7 @@
 
     <application
         android:name="shopping.MyApplication"
-        android:debuggable="true" >
+        android:debuggable="true">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="ZSIVZIFjjMPFb4xZle0QGIwG" />
@@ -37,7 +37,7 @@
         <activity
             android:name=".com.upload.UploadActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MyTheme" >
+            android:theme="@style/Theme.MyTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -96,18 +96,14 @@
         <activity android:name=".com.upload.DrawPointActivity" />
         <activity android:name=".Main22Activity" />
         <activity android:name=".com.map.MockGpsActivity" />
-        <activity android:name=".test.ShopActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".test.ShopActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".test.QzoneListActivity" />
 
         <!-- shop -->
 
-        <activity android:name="shopping.main.HomeActivity" >
+        <activity android:name="shopping.main.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -116,26 +112,33 @@
         </activity>
         <activity android:name="shopping.login.LoginActivity" />
         <activity android:name="shopping.login.RegistActivity" />
-        <activity android:name="design.single.MainActivity" >
+        <activity android:name="design.single.MainActivity">
+
+        </activity>
+        <activity android:name=".eventbus.EventBusActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".eventbus.EventBusActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".eventbus.EventBus2Activity" >
-        </activity>
-        <activity android:name=".com.pay.wxpay.WXPayEntryActivity" android:exported="true" android:launchMode="singleTop"></activity>
+        <activity android:name=".eventbus.EventBus2Activity"></activity>
+
+        <activity
+            android:name=".com.pay.wxpay.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"></activity>
+
         <activity android:name=".com.pay.alipay.TestAliPayActivity"></activity>
         <activity android:name=".com.pay.wxpay.WxpayActivity"></activity>
-        <activity android:name=".com.RecycleListViewActivity"/>
+        <activity android:name=".com.RecycleListViewActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

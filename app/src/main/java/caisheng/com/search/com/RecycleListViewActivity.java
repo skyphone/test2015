@@ -1,7 +1,7 @@
 package caisheng.com.search.com;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,11 +13,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import caisheng.com.search.R;
 
-public class RecycleListViewActivity extends AppCompatActivity {
+public class RecycleListViewActivity extends Activity {
 
-    private RecyclerView recyclerView;
+    @Bind(R.id.recycle)
+    RecyclerView recyclerView;
     private ArrayList<String> list;
     private ArrayList<MyBean> list2;
     private SecondView adapter;
@@ -26,10 +29,9 @@ public class RecycleListViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_recycle);
+        ButterKnife.bind(this);
 
 
-
-        recyclerView = (RecyclerView) findViewById(R.id.recycle);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
 //        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, OrientationHelper.VERTICAL));
@@ -51,8 +53,6 @@ public class RecycleListViewActivity extends AppCompatActivity {
     }
 
 
-
-
     public void add(View v) {
         MyBean b = new MyBean();
         b.name = "qqqqqqqq" + 10;
@@ -72,7 +72,6 @@ public class RecycleListViewActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
-
 
 
     class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHold> {
@@ -97,16 +96,19 @@ public class RecycleListViewActivity extends AppCompatActivity {
         }
 
         class MyViewHold extends RecyclerView.ViewHolder {
-            public TextView textView1;
-            public TextView textView2;
+            @Bind(R.id.text1) TextView textView1;
+            @Bind(R.id.text2) TextView textView2;
 
             public MyViewHold(View itemView) {
                 super(itemView);
-                textView1 = (TextView) itemView.findViewById(R.id.text1);
-                textView2 = (TextView) itemView.findViewById(R.id.text2);
+                ButterKnife.bind(this, itemView);
+
             }
         }
+
+
     }
+
     /**
      * 两种ui
      */
@@ -116,7 +118,7 @@ public class RecycleListViewActivity extends AppCompatActivity {
             if (viewType == 1) {
                 return new ImageViewHold(getLayoutInflater().inflate(R.layout.recycle_loading, parent, false));
             } else {
-                return new TextViewHold(getLayoutInflater().inflate(R.layout.item, parent, false));
+                return new TextViewHold(getLayoutInflater().inflate(R.layout.recycle_view_item, parent, false));
             }
 
         }
