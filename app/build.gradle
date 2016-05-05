@@ -9,6 +9,7 @@ android {
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
+//        compileOptions.encoding = 'utf-8'
 
     }
 
@@ -53,4 +54,5 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit:2.0.0-beta1'
     compile 'com.squareup.retrofit:converter-gson:2.0.0-beta1'
     compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.android.support:recyclerview-v7:+'
 }
