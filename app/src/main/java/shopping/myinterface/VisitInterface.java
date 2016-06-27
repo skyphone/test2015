@@ -3,11 +3,12 @@ package shopping.myinterface;
 import com.google.gson.JsonObject;
 
 import caisheng.com.search.test.QzoneListBean;
-import retrofit.Call;
-import retrofit.http.Body;
-import retrofit.http.GET;
-import retrofit.http.POST;
-import retrofit.http.Path;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Path;
+
 
 /**
  * Created by Administrator on 2016/2/21.

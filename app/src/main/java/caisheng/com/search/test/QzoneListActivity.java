@@ -2,7 +2,6 @@ package caisheng.com.search.test;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListView;
 
 import com.google.gson.JsonObject;
@@ -11,11 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import caisheng.com.search.R;
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-import retrofit.Response;
-import retrofit.Retrofit;
 import caisheng.com.search.test.network.Qzone;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class QzoneListActivity extends Activity {
 
@@ -82,17 +82,16 @@ public class QzoneListActivity extends Activity {
         Retrofit retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(ShopActivity.baseUrl).build();
         retrofit.create(Qzone.class).getQzoneList(jsonObject).enqueue(new Callback<QzoneListBean>() {
             @Override
-            public void onResponse(Response<QzoneListBean> response) {
+            public void onResponse(Call<QzoneListBean> call, Response<QzoneListBean> response) {
                 if (response.body().status.equals("succ")) {
                     list.addAll(response.body().list);
                     adapter.notifyDataSetChanged();
                 }
-
             }
 
             @Override
-            public void onFailure(Throwable t) {
-                Log.e("error", t.getMessage());
+            public void onFailure(Call<QzoneListBean> call, Throwable t) {
+
             }
         });
 

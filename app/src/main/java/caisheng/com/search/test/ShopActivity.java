@@ -31,15 +31,17 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import caisheng.com.search.R;
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
 import caisheng.com.search.test.network.Qzone;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ShopActivity extends Activity {
     ArrayList<String> files = new ArrayList<>();
     private String imagUrls = "";
-    public static String baseUrl = "http://192.168.1.133:8080/Shop/";
+    public static String baseUrl = "http://192.168.1.106:8080/Shop/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,12 +166,12 @@ public class ShopActivity extends Activity {
                     Retrofit retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(ShopActivity.baseUrl).build();
                     retrofit.create(Qzone.class).addQzone(jsonObject).enqueue(new Callback<JsonObject>() {
                         @Override
-                        public void onResponse(retrofit.Response<JsonObject> response) {
+                        public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                             Toast.makeText(ShopActivity.this, response.body().toString(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
-                        public void onFailure(Throwable t) {
+                        public void onFailure(Call<JsonObject> call, Throwable t) {
 
                         }
                     });
@@ -203,12 +205,12 @@ public class ShopActivity extends Activity {
         Retrofit retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(ShopActivity.baseUrl).build();
         retrofit.create(Qzone.class).register(jsonObject).enqueue(new Callback<JsonObject>() {
             @Override
-            public void onResponse(retrofit.Response<JsonObject> response) {
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 Toast.makeText(ShopActivity.this, response.body().toString(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<JsonObject> call, Throwable t) {
 
             }
         });
@@ -226,12 +228,12 @@ public class ShopActivity extends Activity {
         Retrofit retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(ShopActivity.baseUrl).build();
         retrofit.create(Qzone.class).login(jsonObject).enqueue(new Callback<JsonObject>() {
             @Override
-            public void onResponse(retrofit.Response<JsonObject> response) {
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 Toast.makeText(ShopActivity.this, response.body().toString(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<JsonObject> call, Throwable t) {
 
             }
         });

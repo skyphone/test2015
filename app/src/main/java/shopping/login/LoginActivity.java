@@ -11,14 +11,15 @@ import android.widget.Toast;
 import com.google.gson.JsonObject;
 
 import caisheng.com.search.R;
-import caisheng.com.search.test.ShopActivity;
 import caisheng.com.search.test.StringEncrypt;
-import caisheng.com.search.test.network.Qzone;
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 import shopping.BaseConfig;
 import shopping.MyApplication;
+import shopping.myinterface.VisitInterface;
+import shopping.util.CustomRetroFit;
 import shopping.util.PrefUtils;
 
 public class LoginActivity extends Activity {
@@ -57,29 +58,30 @@ public class LoginActivity extends Activity {
         jsonObject.addProperty("userName", userName);
         jsonObject.addProperty("passWord", StringEncrypt.EncryptBySHA_256(pass));
 
-        Retrofit retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(ShopActivity.baseUrl).build();
-        retrofit.create(Qzone.class).login(jsonObject).enqueue(new Callback<JsonObject>() {
+        Retrofit retrofit = CustomRetroFit.getRetrofit();
+
+        retrofit.create(VisitInterface.class).login(jsonObject).enqueue(new Callback<JsonObject>() {
             @Override
-            public void onResponse(retrofit.Response<JsonObject> response) {
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 JsonObject object=response.body();
                 if(object.get("status").getAsString().equals("succ")){
-                    PrefUtils.saveToPrefs(LoginActivity.this, BaseConfig.USERNAME,userName);
-                    PrefUtils.saveToPrefs(LoginActivity.this, BaseConfig.PASSWORD, StringEncrypt.EncryptBySHA_256(pass));
+                    PrefUtils.saveToPrefs(LoginActivity.this, BaseConfig.USERNAME, userName);
+                    PrefUtils.saveToPrefs(LoginActivity.this, BaseConfig.PASSWORD, StringEncrypt.EncryptBySHA_256(pass));//密码加密保存
 
                     Toast.makeText(LoginActivity.this, object.get("info").getAsString(), Toast.LENGTH_SHORT).show();
-
-                    ((MyApplication)getApplication()).userInfo.userName=login_name_edt.getText().toString();
+                    MyApplication.userInfo.isLoaded=true;
+                    MyApplication.userInfo.userName=login_name_edt.getText().toString();
                     setResult(RESULT_OK);
                     finish();
                 }else{
+                    MyApplication.userInfo.isLoaded=false;
                     Toast.makeText(LoginActivity.this, object.get("info").getAsString(), Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override
-            public void onFailure(Throwable t) {
-
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                MyApplication.userInfo.isLoaded=false;
             }
         });
 

@@ -1,6 +1,5 @@
 package shopping.personal;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import caisheng.com.search.R;
-import shopping.BaseConfig;
 import shopping.MyApplication;
 import shopping.login.LoginActivity;
 import shopping.login.RegistActivity;
@@ -67,7 +65,7 @@ public class PersonalFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.txt_login:
-                startActivityForResult(new Intent(getActivity(), LoginActivity.class), BaseConfig.LOGIN_CODE);
+                startActivity(new Intent(getActivity(), LoginActivity.class));
                 break;
             case R.id.txt_regis:
                 startActivity(new Intent(getActivity(), RegistActivity.class));
@@ -82,15 +80,16 @@ public class PersonalFragment extends Fragment implements View.OnClickListener{
 
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode==BaseConfig.LOGIN_CODE&&resultCode== Activity.RESULT_OK){
-
+    public void onResume() {
+        super.onResume();
+        if(MyApplication.userInfo.isLoaded){
             linUnlogin.setVisibility(View.GONE);
             rel_login.setVisibility(View.VISIBLE);
             String userName=((MyApplication)getActivity().getApplication()).userInfo.userName;
             txtName.setText(userName);
-
-
+        }else{
+            linUnlogin.setVisibility(View.VISIBLE);
+            rel_login.setVisibility(View.GONE);
         }
 
     }

@@ -6,4 +6,5 @@ package shopping.main;
 public class UserInfo {
     public String userName;
     public String imgUrl;
+    public boolean isLoaded;
 }

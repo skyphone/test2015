@@ -7,23 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.gson.JsonObject;
-
 import caisheng.com.search.R;
-import caisheng.com.search.test.ShopActivity;
-import caisheng.com.search.test.network.Qzone;
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
-import shopping.BaseConfig;
 import shopping.MyApplication;
 import shopping.car.CarFragment;
 import shopping.category.CategoryFragment;
 import shopping.home.HomeFragment;
 import shopping.personal.PersonalFragment;
-import shopping.util.PrefUtils;
 
-
+/*主页*/
 public class HomeActivity extends Activity {
     Fragment mContent;
     HomeFragment homeFragment;
@@ -92,6 +83,7 @@ public class HomeActivity extends Activity {
                 Toast.makeText(HomeActivity.this, "再按一次退出", Toast.LENGTH_SHORT).show();
                 touchTime = currentTime;
             } else {
+                MyApplication.userInfo.isLoaded=false;
                 android.os.Process.killProcess(android.os.Process.myPid());
                 finish();
             }
@@ -99,29 +91,4 @@ public class HomeActivity extends Activity {
     }
 
 
-    public void login(){
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("userName",PrefUtils.getFromPrefs(this,BaseConfig.USERNAME,""));
-        jsonObject.addProperty("passWord",PrefUtils.getFromPrefs(this,BaseConfig.PASSWORD,""));
-
-        Retrofit retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(ShopActivity.baseUrl).build();
-        retrofit.create(Qzone.class).login(jsonObject).enqueue(new Callback<JsonObject>() {
-            @Override
-            public void onResponse(retrofit.Response<JsonObject> response) {
-                JsonObject object=response.body();
-                if(object.get("status").getAsString().equals("succ")){
-                    Toast.makeText(HomeActivity.this, object.get("info").getAsString(), Toast.LENGTH_SHORT).show();
-                    ((MyApplication)getApplication()).userInfo.userName=PrefUtils.getFromPrefs(HomeActivity.this,BaseConfig.USERNAME,"");
-                }else{
-
-                }
-
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-
-            }
-        });
-    }
 }

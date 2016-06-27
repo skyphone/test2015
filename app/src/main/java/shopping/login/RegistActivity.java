@@ -15,11 +15,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import caisheng.com.search.R;
-import caisheng.com.search.test.ShopActivity;
 import caisheng.com.search.test.network.Qzone;
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import shopping.util.CustomRetroFit;
+
 
 public class RegistActivity extends Activity {
 
@@ -70,21 +72,20 @@ public class RegistActivity extends Activity {
         DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ");
         jsonObject.addProperty("createTime", dateFormat.format(new Date()));
 
-        Retrofit retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(ShopActivity.baseUrl).build();
+        Retrofit retrofit = CustomRetroFit.getRetrofit();
         retrofit.create(Qzone.class).register(jsonObject).enqueue(new Callback<JsonObject>() {
             @Override
-            public void onResponse(retrofit.Response<JsonObject> response) {
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 JsonObject object=response.body();
                 if(object.get("status").getAsString().equals("succ")){
                     Toast.makeText(RegistActivity.this, object.get("info").getAsString(), Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(RegistActivity.this, object.get("info").getAsString(), Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<JsonObject> call, Throwable t) {
 
             }
         });
