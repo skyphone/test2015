@@ -7,6 +7,7 @@ import com.facebook.imagepipeline.core.ImagePipelineConfig;
 
 import design.mvp.dagger.AppComponent;
 import design.mvp.dagger.AppModule;
+import design.mvp.dagger.DaggerAppComponent;
 import shopping.main.UserInfo;
 import shopping.util.CrashHandler;
 
