@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 23
@@ -52,8 +51,10 @@ dependencies {
     compile 'me.dm7.barcodescanner:zbar:1.5'
     compile 'com.danikula:videocache:2.2.0'
     compile 'io.reactivex:rxjava:1.0.10'
-    compile 'com.squareup.retrofit:retrofit:2.0.0-beta1'
-    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta1'
+//    compile 'com.squareup.retrofit:retrofit:2.0.0-beta1'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.android.support:recyclerview-v7:+'
     compile 'com.jakewharton:butterknife:7.0.0'
