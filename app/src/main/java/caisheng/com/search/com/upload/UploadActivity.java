@@ -64,7 +64,7 @@ public class UploadActivity extends AppCompatActivity {
 
         view = (Button) findViewById(R.id.button9);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_layout);
-        toolbar.setTitle("i love you");
+        toolbar.setTitle("工具");
         setSupportActionBar(toolbar);
 
 
@@ -157,7 +157,7 @@ public class UploadActivity extends AppCompatActivity {
         builder.setContentTitle("my title");
         builder.setContentText("hey,want to get somelunch?");
         builder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.a)));
-        builder.setStyle(new NotificationCompat.InboxStyle().addLine("could you make my best friend").setBigContentTitle("i miss you").setSummaryText("nice to meet you,ping,sometimes we have not to talk,but when the time go by,we will know each other"));
+        builder.setStyle(new NotificationCompat.InboxStyle().addLine("could you make my best friend").setBigContentTitle("test title ").setSummaryText("we will know each other"));
 
         Notification noti = builder.build();
         NotificationManagerCompat.from(this).notify(2, noti);
