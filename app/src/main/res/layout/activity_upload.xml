@@ -108,9 +108,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="收货地址"
+        android:text="桌面应用"
         android:id="@+id/button29"
-        android:onClick="address"
+        android:onClick="launcher"
         android:layout_alignBottom="@+id/button28"
         android:layout_toRightOf="@+id/button28"
         android:layout_toEndOf="@+id/button28" />

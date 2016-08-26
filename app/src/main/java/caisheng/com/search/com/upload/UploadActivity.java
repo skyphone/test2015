@@ -39,6 +39,8 @@ import caisheng.com.search.ViewPagerActivity;
 import caisheng.com.search.com.map.MapActivity;
 import caisheng.com.search.com.qrcode.QRCodeActivity;
 import caisheng.com.search.dummy.charting.MainActivity;
+import launcher.MainLunchActivity;
+import shopping.login.LunchActivity;
 
 /**
  * 每个人这辈子都会遇到三个人，
@@ -206,7 +208,6 @@ public class UploadActivity extends AppCompatActivity {
         intent.putExtra(KEY_ID,"hello");
         ActivityOptions activityOptions=ActivityOptions.makeSceneTransitionAnimation(this,v,"hello");
         startActivity(intent,activityOptions.toBundle());
-        String ss="i miss you";
     }
 
     public void CreditsParams(View v) {
@@ -225,7 +226,9 @@ public class UploadActivity extends AppCompatActivity {
         startActivity(new Intent(this, My2.class));
     }
 
-
+    public void launcher(View v) {
+        startActivity(new Intent(this, MainLunchActivity.class));
+    }
 
     public void volley(View v) {
         startActivity(new Intent(this, MyVolley.class));

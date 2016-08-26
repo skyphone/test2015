@@ -128,6 +128,10 @@
         </activity>
         <activity android:name="shopping.main.GuideActivity"></activity>
 
+        <activity android:name="launcher.MainLunchActivity" android:theme="@style/NoActionBar" >
+
+        </activity>
+
     </application>
 
 </manifest>
