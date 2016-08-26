@@ -76,9 +76,7 @@
         <activity
             android:name=".com.upload.ChoosePicActivity"
             android:label="@string/title_activity_choose_pic"/>
-        <activity
-            android:name=".com.login.AnimActivity"
-            android:theme="@style/Theme.MyTheme"/>
+
         <activity android:name=".com.upload.CameraActivity"/>
         <activity android:name=".com.upload.PlayWebVideoActivity"/>
         <activity android:name=".dummy.charting.MainActivity"/>
@@ -87,7 +85,6 @@
         <activity android:name=".HtmlActivity"/>
         <activity android:name=".My1"/>
         <activity android:name=".My2"/>
-        <activity android:name=".My4"/>
         <activity android:name=".MyVolley"/>
         <activity android:name=".ViewPagerActivity"/>
         <activity android:name=".com.map.MapActivity"/>
@@ -114,11 +111,7 @@
         <activity android:name="design.single.MainActivity">
         </activity>
         <activity android:name=".eventbus.EventBusActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".eventbus.EventBus2Activity"/>
         <activity
@@ -131,20 +124,10 @@
 
         </activity>
         <activity android:name="shopping.login.LunchActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name="shopping.main.GuideActivity"></activity>
-        <activity android:name="design.mvp.MvpActivity"  android:theme="@style/Theme.AppCompat.Light">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

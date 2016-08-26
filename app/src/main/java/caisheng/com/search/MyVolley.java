@@ -12,20 +12,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
-import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -227,49 +221,6 @@ public class MyVolley extends Activity {
 
 
 
-    public void requestJson() {
-        String url = "http://memberapi.aolaigo.com/appmember.ashx";
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("opt", "7");
-        map.put("cmd", "3");
-        JSONObject jsonObject = new JSONObject(map);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject jsonObject) {
-                TextView textView = new TextView(getApplicationContext());
-                textView.setText(jsonObject.toString());
-                //listView.addHeaderView(textView);
-            }
-        }, null);
-        VolleryInstance.getInstance(this).addToRequestQueue(request);
-    }
-
-    public void json() {
-        String url = "http://cms.aolaigo.com/Handler/app_ActivityHandler.ashx";
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("opt", "2");
-            jsonObject.put("cmd", "2");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        /*JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject jsonObject) {
-                Log.e("home", jsonObject.toString());
-            }
-        }, null);*/
-
-        StringRequest jsonRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String s) {
-               Datas d=new Gson().fromJson(s,Datas.class);
-               // int abc=d.error;
-            }
-        },null);
-
-        VolleryInstance.getInstance(this).addToRequestQueue(jsonRequest);
-    }
 
 
 

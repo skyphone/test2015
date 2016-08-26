@@ -26,20 +26,19 @@ import android.widget.Toast;
 import java.io.FileNotFoundException;
 import java.util.Random;
 
-import caisheng.com.search.dummy.charting.MainActivity;
+import caisheng.com.search.AnimActivity;
 import caisheng.com.search.AutoScrollActivity;
 import caisheng.com.search.BaseHtmlActivity;
 import caisheng.com.search.Main22Activity;
 import caisheng.com.search.My1;
 import caisheng.com.search.My2;
-import caisheng.com.search.My4;
 import caisheng.com.search.MyVolley;
 import caisheng.com.search.R;
 import caisheng.com.search.TransitionsActivity;
 import caisheng.com.search.ViewPagerActivity;
-import caisheng.com.search.com.login.AnimActivity;
 import caisheng.com.search.com.map.MapActivity;
 import caisheng.com.search.com.qrcode.QRCodeActivity;
+import caisheng.com.search.dummy.charting.MainActivity;
 
 /**
  * 每个人这辈子都会遇到三个人，
@@ -207,6 +206,7 @@ public class UploadActivity extends AppCompatActivity {
         intent.putExtra(KEY_ID,"hello");
         ActivityOptions activityOptions=ActivityOptions.makeSceneTransitionAnimation(this,v,"hello");
         startActivity(intent,activityOptions.toBundle());
+        String ss="i miss you";
     }
 
     public void CreditsParams(View v) {
@@ -225,9 +225,7 @@ public class UploadActivity extends AppCompatActivity {
         startActivity(new Intent(this, My2.class));
     }
 
-    public void address(View v) {
-        startActivity(new Intent(this, My4.class));
-    }
+
 
     public void volley(View v) {
         startActivity(new Intent(this, MyVolley.class));
